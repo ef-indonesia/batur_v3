@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Batur</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Sign In</string>
+    <string name="onbackpressed">Please click BACK again to exit</string>
+    <string name="data_empty">Data not available</string>
+    <string name="data_empty_desc">The request data does not exist</string>
+    <string name="keluar">Keluar</string>
+    <string name="cek_koneksi">Cek koneksi internet Anda</string>
+    <string name="coba_lagi">Coba lagi</string>
+    <string name="error">Error</string>
+    <string name="prioritas_visit">Prioritas Visit</string>
+    <string name="cari">Cari</string>
+    <string name="area">Area</string>
+    <string name="management_unit">Management Unit</string>
+    <string name="desa">Desa</string>
+    <string name="konfirmasi">Konfirmasi</string>
+    <string name="ya">Ya</string>
+    <string name="yakin_keluar">Yakin keluar aplikasi?</string>
+    <string name="tidak">Tidak</string>
+    <string name="loading">Loading</string>
+    <string name="all">All</string>
+    <string name="nama_petani_dan_alamat">Nama Petani dan Alamat</string>
+    <string name="gambar">Gambar</string>
+    <string name="total_terpilih">Total terpilih :</string>
+    <string name="total_semua">Total semua :</string>
+    <string name="internal_memory">Internal memory :</string>
+    <string name="list_no_items">No items</string>
+    <string name="hint_search">Search</string>
+    <string name="visit">Visit</string>
+</resources>

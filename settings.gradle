@@ -1,0 +1,3 @@
+include ':flexspinnerlibrary'
+include ':app'
+rootProject.name = "Batur"

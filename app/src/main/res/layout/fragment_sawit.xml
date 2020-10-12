@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:padding="@dimen/dimens_10">
+
+        <TextView
+            android:id="@+id/tv_jenis_komoditas_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jenis Tanaman :"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_jenis_komoditas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="Sawit"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_jenis_komoditas_title"
+            app:layout_constraintTop_toTopOf="@id/tv_jenis_komoditas_title" />
+
+        <TextView
+            android:id="@+id/tv_bjr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_20"
+            android:text="Berat janjang rata - rata (BJR)"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_jenis_komoditas" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_bjr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_10"
+            app:layout_constraintTop_toBottomOf="@id/tv_bjr">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_bjr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_halp_round_left"
+                android:hint="Masukan BJR"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/rl_bjr_indicator"
+                app:layout_constraintEnd_toStartOf="@id/cl_spinner_bjr"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/rl_bjr_indicator" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_spinner_bjr"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/dimens_10"
+                android:background="@drawable/bg_halp_round_right"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="@dimen/dimens_5"
+                app:layout_constraintBottom_toBottomOf="@id/et_bjr"
+                app:layout_constraintEnd_toStartOf="@id/rl_bjr_indicator"
+                app:layout_constraintTop_toTopOf="@id/et_bjr">
+
+                <com.skydoves.powerspinner.PowerSpinnerView
+                    android:id="@+id/sp_bjr"
+                    android:layout_width="@dimen/dimens_50"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:hint="KG"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_bjr_indicator"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_round"
+                android:backgroundTint="@color/traceon_merah"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_brondol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_20"
+            android:text="Jumlah brondol per BJR"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_bjr" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_brondol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_10"
+            app:layout_constraintTop_toBottomOf="@id/tv_brondol">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_brondol"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimens_10"
+                android:background="@drawable/bg_round_transparant"
+                android:hint="Masukan BJR"
+                android:padding="@dimen/dimens_10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/rl_brondol_indicator"
+                app:layout_constraintEnd_toStartOf="@id/rl_brondol_indicator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/rl_brondol_indicator" />
+
+            <RelativeLayout
+                android:id="@+id/rl_brondol_indicator"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_round"
+                android:backgroundTint="@color/traceon_orange"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_buah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_20"
+            android:text="Buah normal"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_brondol" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_buah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_10"
+            app:layout_constraintTop_toBottomOf="@id/tv_buah">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_buah"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_halp_round_left"
+                android:hint="Masukan psersentase buah normal"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/rl_buah_indicator"
+                app:layout_constraintEnd_toStartOf="@id/cl_buah_persen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/rl_buah_indicator" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_buah_persen"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/dimens_10"
+                android:background="@drawable/bg_halp_round_right"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="@dimen/dimens_5"
+                app:layout_constraintBottom_toBottomOf="@id/et_buah"
+                app:layout_constraintEnd_toStartOf="@id/rl_buah_indicator"
+                app:layout_constraintTop_toTopOf="@id/et_buah">
+
+                <TextView
+                    android:layout_width="@dimen/dimens_50"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="%"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_buah_indicator"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_round"
+                android:backgroundTint="@color/traceon_merah"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_potensi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_20"
+            android:text="Potensi Panen"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_buah" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_potensi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_10"
+            app:layout_constraintTop_toBottomOf="@id/tv_potensi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_potensi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_halp_round_left"
+                android:hint="Masukan BJR"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/rl_potensi_indicator"
+                app:layout_constraintEnd_toStartOf="@id/cl_spinner_potensi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/rl_potensi_indicator" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_spinner_potensi"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/dimens_10"
+                android:background="@drawable/bg_halp_round_right"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="@dimen/dimens_5"
+                app:layout_constraintBottom_toBottomOf="@id/et_potensi"
+                app:layout_constraintEnd_toStartOf="@id/rl_potensi_indicator"
+                app:layout_constraintTop_toTopOf="@id/et_potensi">
+
+                <com.skydoves.powerspinner.PowerSpinnerView
+                    android:id="@+id/sp_potensi"
+                    android:layout_width="@dimen/dimens_50"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:hint="Ton"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_potensi_indicator"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_round"
+                android:backgroundTint="@color/traceon_hijau"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

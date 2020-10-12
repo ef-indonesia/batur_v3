@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="warna">
+        <item>@color/red_900</item>
+        <item>@color/red_800</item>
+        <item>@color/red_700</item>
+        <item>@color/red_600</item>
+        <item>@color/red_500</item>
+        <item>@color/red_400</item>
+        <item>@color/red_300</item>
+        <item>@color/red_200</item>
+        <item>@color/red_100</item>
+        <item>@color/red_50</item>
+        <item>@color/red_30</item>
+    </integer-array>
+</resources>
