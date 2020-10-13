@@ -48,24 +48,24 @@ class RemoteRepository {
         database: String,
         desa_id: String,
         petani_id: String
-    ): Observable<List<Petani>> {
+    ): Call<List<Petani>> {
         return api.get_petani(database, desa_id, petani_id)
     }
 
     fun getLahan(
         database: String, petani_id: String, desa_id: String, kode: String
-    ): Observable<List<ResponseLahan>> {
+    ): Call<List<ResponseLahan>> {
         return api.get_lahan(database, petani_id, desa_id, kode)
     }
 
     fun getJenisKomoditas(
-        database: String,
-        sub_kategori_komoditas_id: String
-    ): Observable<List<ResponseJenisKomoditas>> {
+        database: String?,
+        sub_kategori_komoditas_id: String?
+    ): Call<List<ResponseJenisKomoditas>> {
         return api.get_komoditas(database, sub_kategori_komoditas_id)
     }
 
-    fun getDeleteImage(database: String, file_path: String): Observable<List<ResponseUpdate>> {
+    fun getDeleteImage(database: String, file_path: String): Call<List<ResponseUpdate>> {
         return api.delete_image(database, file_path)
     }
 
@@ -75,11 +75,15 @@ class RemoteRepository {
         tim_medis_id: String,
         user_id: String,
         token: String
-    ): Observable<List<ResponseProfile>> {
+    ): Call<List<ResponseProfile>> {
         return api.request_profil(database, table_id, tim_medis_id, user_id, token)
     }
 
     fun getPrioritasVisit(database: String, desa_id: String): Call<ResponsePrioritasVisit> {
         return api.get_prioritas_visit(database, desa_id)
+    }
+
+    fun getIncidentalVisit(database: String, kode: String): Call<ResponseIncidentalVisit> {
+        return api.get_incidental_visit(database, kode)
     }
 }

@@ -59,18 +59,27 @@
                     app:layout_constraintTop_toTopOf="@id/view_cv">
 
                     <TextView
-                        android:id="@+id/tv_area_title"
+                        android:id="@+id/tv_mu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        tools:text="Wonorejo" />
+                        tools:text="@string/management_unit" />
 
                     <TextView
-                        android:id="@+id/tv_area_description"
+                        android:id="@+id/tv_area"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textSize="12sp"
-                        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do elusmod tempor." />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:layout_marginBottom="@dimen/dimens_10"
+                        android:textStyle="bold"
+                        tools:text="@string/area" />
+
+                    <TextView
+                        android:id="@+id/tv_desa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        tools:text="@string/desa" />
 
                 </LinearLayout>
 
@@ -99,6 +108,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_title">
 
             <include
+                android:id="@+id/empty"
                 layout="@layout/content_empty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -153,19 +163,19 @@
                     android:padding="@dimen/dimens_10">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tv_incidental_search"
+                        android:id="@+id/et_search"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/dimens_10"
-                        android:hint="Masukkan kode lahan"
+                        android:hint="@string/masukkan_kode_lahan"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/bt_incidental"
+                        app:layout_constraintEnd_toStartOf="@id/bt_search"
                         app:layout_constraintStart_toStartOf="parent" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bt_incidental"
+                        android:id="@+id/bt_search"
                         style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
@@ -173,27 +183,28 @@
                         android:text="@string/cari"
                         android:textStyle="bold"
                         app:cornerRadius="@dimen/dimens_5"
-                        app:layout_constraintBottom_toBottomOf="@id/rl_incidental_qr"
-                        app:layout_constraintEnd_toStartOf="@id/rl_incidental_qr"
+                        app:layout_constraintBottom_toBottomOf="@id/rl_qr"
+                        app:layout_constraintEnd_toStartOf="@id/rl_qr"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <RelativeLayout
-                        android:id="@+id/rl_incidental_qr"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                    <com.traceon.batur.ui.base.SquareLayout
+                        android:id="@+id/rl_qr"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/bg_round_transparant"
                         android:padding="@dimen/dimens_5"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_incidental_search"
+                        app:layout_constraintBottom_toBottomOf="@id/et_search"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/tv_incidental_search">
+                        app:layout_constraintTop_toTopOf="@id/et_search">
 
                         <ImageView
                             android:id="@+id/iv_incidental_qr"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
                             android:src="@drawable/ic_qr_code" />
 
-                    </RelativeLayout>
+                    </com.traceon.batur.ui.base.SquareLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

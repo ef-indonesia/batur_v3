@@ -2,6 +2,7 @@ package com.traceon.batur.ui.visit
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.androidbuts.multispinnerfilter.KeyPairBoolData
@@ -15,15 +16,21 @@ import com.traceon.batur.data.response.ResponseLogin
 import com.traceon.batur.data.response.ResponseManagementUnit
 import com.traceon.batur.databinding.FragmentVisitBinding
 import com.traceon.batur.ui.base.BaseFragment
+import com.traceon.batur.utils.AppConstant
 import com.traceon.batur.utils.Helper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
+
     private lateinit var repo: RemoteRepository
     private var responseLogin: ResponseLogin? = null
     private lateinit var dialog: SweetAlertDialog
+    private var idDesa: ArrayList<Int?> = ArrayList()
+    private lateinit var mDesa: String
+    private lateinit var mMu: String
+    private lateinit var mArea: String
 
     override fun getViewModelBindingVariable(): Int = NO_VIEW_MODEL_BINDING_VARIABLE
 
@@ -61,8 +68,18 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        getDataBinding().fabVisit.setOnClickListener {
+        getDataBinding().btVisit.setOnClickListener {
             val i = Intent(context, VisitActivity::class.java)
+            var id = 0
+            idDesa.forEach {
+                if (it == 48) {
+                    id = it
+                }
+            }
+            i.putExtra(AppConstant.ID_DESA, id.toString())
+            i.putExtra(AppConstant.NAMA_DESA, mDesa)
+            i.putExtra(AppConstant.MU, mMu)
+            i.putExtra(AppConstant.AREA, mArea)
             startActivity(i)
             activity?.overridePendingTransition(
                 R.anim.enter,
@@ -88,6 +105,10 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
                 }
 
                 override fun onFailure(call: Call<List<ResponseManagementUnit>>, t: Throwable) {
+                    SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText(getString(R.string.error))
+                        .setContentText("Gagal ambil Data Management Unit")
+                        .show()
                     dialog.dismiss()
                     t.printStackTrace()
                 }
@@ -109,6 +130,8 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         getDataBinding().spMu.setItems(dataManagementUnit, object : SingleSpinnerListener {
             override fun onItemsSelected(selectedItem: KeyPairBoolData?) {
                 if (selectedItem?.isSelected == true) getArea(selectedItem.id.toString())
+                val id = selectedItem?.id?.toInt() ?: 0
+                mMu = selectedItem?.name.toString()
             }
 
             override fun onClear() {
@@ -135,6 +158,10 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
                 }
 
                 override fun onFailure(call: Call<List<ResponseArea>>, t: Throwable) {
+                    SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText(getString(R.string.error))
+                        .setContentText("Gagal ambil Data Area")
+                        .show()
                     t.printStackTrace()
                     dialog.dismiss()
                 }
@@ -155,6 +182,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         getDataBinding().spArea.setItems(dataArea, object : SingleSpinnerListener {
             override fun onItemsSelected(selectedItem: KeyPairBoolData?) {
                 if (selectedItem?.isSelected == true) getDesa(selectedItem.id.toString())
+                mArea = selectedItem?.name.toString()
             }
 
             override fun onClear() {
@@ -179,6 +207,10 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
                 }
 
                 override fun onFailure(call: Call<List<ResponseDesa>>, t: Throwable) {
+                    SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText(getString(R.string.error))
+                        .setContentText("Gagal ambil Data Desa")
+                        .show()
                     t.printStackTrace()
                     dialog.dismiss()
                 }
@@ -205,8 +237,12 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         }
         getDataBinding().spDesa.setItems(dataDesa) { items ->
             items.forEach { ds ->
-                if (ds.isSelected) getDataBinding().fabVisit.visibility = View.VISIBLE
+                if (ds.isSelected) getDataBinding().btVisit.visibility = View.VISIBLE
+                val id = ds.id.toInt()
+                idDesa.add(desa?.get(id)?.iD)
+                mDesa = ds.name
             }
+            Log.d("DAT", "" + idDesa)
         }
     }
 

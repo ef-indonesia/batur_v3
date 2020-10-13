@@ -15,7 +15,7 @@
             android:layout_marginEnd="@dimen/dimens_10"
             android:minHeight="140dp"
             android:theme="@style/Theme.MaterialComponents.DayNight"
-            app:cardCornerRadius="@dimen/dimens_20"
+            app:cardCornerRadius="@dimen/dimens_15"
             app:cardElevation="@dimen/dimens_5"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut">
@@ -63,7 +63,6 @@
                             android:layout_marginStart="@dimen/dimens_5"
                             android:background="@null"
                             android:hint="@string/management_unit"
-                            android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="@id/sp_mu"
                             app:layout_constraintStart_toStartOf="@id/sp_mu"
                             app:layout_constraintTop_toTopOf="@id/sp_mu" />
@@ -107,7 +106,6 @@
                             android:layout_marginStart="@dimen/dimens_5"
                             android:background="@null"
                             android:hint="@string/area"
-                            android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="@id/sp_area"
                             app:layout_constraintStart_toStartOf="@id/sp_area"
                             app:layout_constraintTop_toTopOf="@id/sp_area" />
@@ -150,7 +148,6 @@
                             android:layout_marginStart="@dimen/dimens_5"
                             android:background="@null"
                             android:hint="@string/desa"
-                            android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="@id/sp_desa"
                             app:layout_constraintStart_toStartOf="@id/sp_desa"
                             app:layout_constraintTop_toTopOf="@id/sp_desa" />
@@ -208,20 +205,25 @@
 
             <com.github.mikephil.charting.charts.PieChart
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="-52dp"
+                tools:layout_editor_absoluteY="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_visit"
-            android:layout_width="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_visit"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/dimens_10"
-            android:src="@drawable/ic_baseline_add"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:layout_marginBottom="@dimen/dimens_10"
+            android:text="@string/visit"
+            android:textStyle="bold"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:cornerRadius="@dimen/dimens_5"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

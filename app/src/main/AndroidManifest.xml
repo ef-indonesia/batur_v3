@@ -11,6 +11,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:node="replace" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA2" />
 
     <application
         android:name=".App"
@@ -46,8 +51,9 @@
         <activity
             android:name=".ui.me.PasswordActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
-
-        <service android:name="com.highbryds.gpstracker.GPSService" />
+        <activity
+            android:name=".ui.base.ScanQrCode"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
 
     </application>
 

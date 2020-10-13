@@ -45,7 +45,7 @@ data class Visit(
     var no_urut: Int = 0,
     @SerializedName("warna")
     @ColumnInfo(name = "warna")
-    var warna: Int,
+    var warna: String? = null,
     @PrimaryKey(autoGenerate = true)
     @SerializedName("ID")
     @ColumnInfo(name = "ID")

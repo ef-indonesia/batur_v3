@@ -50,20 +50,36 @@
                             android:layout_marginStart="@dimen/dimens_10"
                             android:layout_marginBottom="@dimen/dimens_10"
                             android:background="@drawable/bg_spinner"
-                            android:padding="@dimen/dimens_5"
                             app:layout_constraintBottom_toTopOf="@id/cl_spinner_area">
 
-                            <com.skydoves.powerspinner.PowerSpinnerView
+                            <com.androidbuts.multispinnerfilter.SingleSpinnerSearch
                                 android:id="@+id/sp_mu"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/dimens_5"
-                                android:layout_marginEnd="@dimen/dimens_5"
-                                android:hint="@string/management_unit"
+                                android:background="@android:color/transparent"
+                                app:hintText="@string/management_unit"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:spinner_arrow_animate="true"
-                                app:spinner_arrow_tint="@android:color/black" />
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_mu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/management_unit"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_mu"
+                                app:layout_constraintStart_toStartOf="@id/sp_mu"
+                                app:layout_constraintTop_toTopOf="@id/sp_mu" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_mu"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/sp_mu" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -73,23 +89,41 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimens_10"
                             android:background="@drawable/bg_spinner"
-                            android:padding="@dimen/dimens_5"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <com.skydoves.powerspinner.PowerSpinnerView
+                            <com.androidbuts.multispinnerfilter.SingleSpinnerSearch
                                 android:id="@+id/sp_area"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/dimens_5"
-                                android:layout_marginEnd="@dimen/dimens_5"
-                                android:hint="@string/area"
+                                android:background="@android:color/transparent"
+                                android:enabled="false"
+                                android:gravity="center_vertical"
+                                app:hintText="@string/area"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:spinner_arrow_animate="true"
-                                app:spinner_arrow_tint="@android:color/black" />
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_area"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/area"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_area"
+                                app:layout_constraintStart_toStartOf="@id/sp_area"
+                                app:layout_constraintTop_toTopOf="@id/sp_area" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_area"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/sp_area" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -100,18 +134,39 @@
                             android:layout_marginStart="@dimen/dimens_10"
                             android:layout_marginTop="@dimen/dimens_10"
                             android:background="@drawable/bg_spinner"
-                            android:padding="@dimen/dimens_5"
                             app:layout_constraintTop_toBottomOf="@id/cl_spinner_area">
 
                             <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
                                 android:id="@+id/sp_desa"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:spinnerMode="dialog"
                                 app:hintText="@string/desa"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_desa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/desa"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_desa"
+                                app:layout_constraintStart_toStartOf="@id/sp_desa"
+                                app:layout_constraintTop_toTopOf="@id/sp_desa" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_desa"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/sp_desa" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 

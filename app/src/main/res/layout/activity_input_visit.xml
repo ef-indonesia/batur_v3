@@ -120,11 +120,26 @@
                         android:id="@+id/sp_pilih_komoditas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:foreground="?attr/selectableItemBackground"
                         android:hint="Pilih Komoditas"
+                        android:padding="@dimen/dimens_5"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/light_transparent"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/komoditi"
+                        app:spinner_popup_animation="dropdown"
+                        app:spinner_popup_background="@color/colorPrimary"
+                        app:spinner_popup_elevation="14dp"
+                        tools:targetApi="m" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -204,12 +219,25 @@
                         android:id="@+id/sp_pilih_komoditas_baru"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@android:color/white"
+                        android:background="@color/colorPrimary"
+                        android:foreground="?attr/selectableItemBackground"
                         android:hint="Pilih Komoditas"
+                        android:padding="@dimen/dimens_5"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/light_transparent"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/komoditi"
+                        app:spinner_popup_animation="dropdown"
+                        app:spinner_popup_background="@color/colorPrimary"
+                        app:spinner_popup_elevation="14dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -235,11 +263,26 @@
                         android:id="@+id/sp_siklus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:foreground="?attr/selectableItemBackground"
                         android:hint="Pilih Siklus"
+                        android:padding="@dimen/dimens_5"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@android:color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_arrow_tint="@android:color/black"
+                        app:spinner_divider_color="@android:color/black"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/fase"
+                        app:spinner_popup_animation="dropdown"
+                        app:spinner_popup_background="@android:color/white"
+                        app:spinner_popup_elevation="14dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

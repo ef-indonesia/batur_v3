@@ -18,4 +18,8 @@ object AppConstant {
     const val SELECTED_DESA = "selected_desa"
     const val SUCCESS = "success"
     const val LOGIN = "login"
+    const val SCAN_QR = 1234
+    const val DATA = "data"
+    const val AREA = "area"
+    const val MU = "mu"
 }

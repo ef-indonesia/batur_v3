@@ -27,8 +27,6 @@ class LoginActivity : AppCompatActivity() {
 
         Helper.setLightStatusBar(window.decorView, this, true)
 
-//        Helper.darkMode(isDark = true, now = true, context = this)
-
         repo = RemoteRepository()
         bt_submit.setOnClickListener {
             onLogin()

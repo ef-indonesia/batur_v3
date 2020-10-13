@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer-array name="warna">
-        <item>@color/red_900</item>
-        <item>@color/red_800</item>
-        <item>@color/red_700</item>
-        <item>@color/red_600</item>
-        <item>@color/red_500</item>
-        <item>@color/red_400</item>
-        <item>@color/red_300</item>
-        <item>@color/red_200</item>
-        <item>@color/red_100</item>
-        <item>@color/red_50</item>
-        <item>@color/red_30</item>
-    </integer-array>
+    <string-array name="warna">
+        <item>#FF5855</item>
+        <item>#FF6E69</item>
+        <item>#FF817D</item>
+        <item>#FF9996</item>
+        <item>#FFAEAB</item>
+        <item>#FFBBB9</item>
+        <item>#FFCBCA</item>
+        <item>#FFD3D1</item>
+        <item>#FFDFDD</item>
+        <item>#FFEDEB</item>
+    </string-array>
+
+    <string-array name="komoditi">
+        <item>Kopi</item>
+        <item>Arwana</item>
+        <item>Bawang Merah</item>
+        <item>Bayam</item>
+        <item>Bayam Jepang</item>
+        <item>Buncis</item>
+    </string-array>
+
+    <string-array name="fase">
+        <item>Persiapan</item>
+        <item>Pembibitan</item>
+        <item>Pemeliharaan</item>
+        <item>Panen</item>
+    </string-array>
 </resources>

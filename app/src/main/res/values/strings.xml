@@ -29,4 +29,6 @@
     <string name="list_no_items">No items</string>
     <string name="hint_search">Search</string>
     <string name="visit">Visit</string>
+    <string name="masukkan_kode_lahan">Masukkan kode lahan</string>
+    <string name="input_visit">Input Visit</string>
 </resources>
