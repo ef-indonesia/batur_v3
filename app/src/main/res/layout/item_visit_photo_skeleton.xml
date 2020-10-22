@@ -17,12 +17,12 @@
             android:layout_gravity="center"
             android:background="@drawable/bg_round_transparant">
 
-            <ImageView
+            <View
                 android:id="@+id/iv_photo"
                 android:layout_width="@dimen/bg_header_height"
                 android:layout_height="@dimen/dimens_100"
+                android:background="@color/light_transparent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_photo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

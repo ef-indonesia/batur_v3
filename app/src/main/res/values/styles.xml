@@ -1,17 +1,20 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="fontFamily">@font/montserrat_regular</item>
-        <item name="fontWeight">100</item>
         <item name="android:textViewStyle">@style/MontserratTextStyle</item>
         <item name="buttonStyle">@style/MontserratButtonStyle</item>
     </style>
 
     <style name="MontserratTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="MontserratEditStyle" parent="Widget.AppCompat.EditText">
         <item name="fontFamily">@font/montserrat_regular</item>
     </style>
 

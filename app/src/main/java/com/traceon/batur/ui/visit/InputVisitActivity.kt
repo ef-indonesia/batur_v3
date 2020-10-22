@@ -1,12 +1,16 @@
 package com.traceon.batur.ui.visit
 
+import android.net.Uri
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.ethanhua.skeleton.Skeleton
+import com.ethanhua.skeleton.SkeletonScreen
 import com.traceon.batur.R
+import com.traceon.batur.data.adapter.PhotoAdapter
 import com.traceon.batur.data.repo.RemoteRepository
 import com.traceon.batur.data.response.ResponseJenisKomoditas
 import com.traceon.batur.data.response.ResponseLogin
@@ -22,8 +26,12 @@ import retrofit2.Response
 @AndroidEntryPoint
 class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewModel>() {
 
+    private lateinit var adapter: PhotoAdapter
+
     private lateinit var repo: RemoteRepository
     private var responseLogin: ResponseLogin? = null
+    private var listPhoto: ArrayList<Uri> = ArrayList()
+    private lateinit var skeletonScreen: SkeletonScreen
 
     override fun getViewModelBindingVariable(): Int = NO_VIEW_MODEL_BINDING_VARIABLE
 
@@ -40,6 +48,14 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
 
         repo = RemoteRepository()
         responseLogin = Helper.getSesiLogin(this)
+        adapter = PhotoAdapter(listPhoto)
+
+        skeletonScreen = Skeleton.bind(getDataBinding().rvVisitPhoto)
+            .adapter(adapter)
+            .load(R.layout.item_visit_photo_skeleton)
+            .color(R.color.shimmer_color)
+            .duration(1000)
+            .show()
 
         try {
             loadData()
@@ -63,7 +79,7 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
                 ) {
                     response.let { res ->
                         if (res.isSuccessful) {
-//                            setKomoditas(res.body())
+
                         } else {
                             SweetAlertDialog(this@InputVisitActivity, SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText(getString(R.string.error))
@@ -84,17 +100,6 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
         listKomoditas?.forEach { kom ->
             komoditas.add(kom.nama.toString())
         }
-
-        getDataBinding().spPilihKomoditas.setItems(komoditas)
-        getDataBinding().spPilihKomoditas.setOnSpinnerItemSelectedListener<String> { position, item ->
-
-        }
-
-        getDataBinding().spPilihKomoditasBaru.setItems(komoditas)
-        getDataBinding().spPilihKomoditasBaru.setOnSpinnerItemSelectedListener<String> { position, item ->
-
-        }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

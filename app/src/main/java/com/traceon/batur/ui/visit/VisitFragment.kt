@@ -2,35 +2,36 @@ package com.traceon.batur.ui.visit
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import cn.pedant.SweetAlert.SweetAlertDialog
-import com.androidbuts.multispinnerfilter.KeyPairBoolData
-import com.androidbuts.multispinnerfilter.SingleSpinnerListener
-import com.skydoves.powerspinner.OnSpinnerItemSelectedListener
+import com.bytcode.lib.spinner.multiselectspinner.data.KeyPairBoolData
+import com.ethanhua.skeleton.Skeleton
+import com.ethanhua.skeleton.SkeletonScreen
 import com.traceon.batur.R
+import com.traceon.batur.data.adapter.ChartAdapter
 import com.traceon.batur.data.repo.RemoteRepository
-import com.traceon.batur.data.response.ResponseArea
-import com.traceon.batur.data.response.ResponseDesa
-import com.traceon.batur.data.response.ResponseLogin
-import com.traceon.batur.data.response.ResponseManagementUnit
+import com.traceon.batur.data.response.*
 import com.traceon.batur.databinding.FragmentVisitBinding
 import com.traceon.batur.ui.base.BaseFragment
 import com.traceon.batur.utils.AppConstant
 import com.traceon.batur.utils.Helper
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
+@AndroidEntryPoint
 class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
 
     private lateinit var repo: RemoteRepository
     private var responseLogin: ResponseLogin? = null
     private lateinit var dialog: SweetAlertDialog
-    private var idDesa: ArrayList<Int?> = ArrayList()
+    private lateinit var idDesa: String
     private lateinit var mDesa: String
     private lateinit var mMu: String
     private lateinit var mArea: String
+    private lateinit var adapter: ChartAdapter
+    private var listDashboard: ArrayList<DashboardChart> = ArrayList()
+    private lateinit var skeletonScreen: SkeletonScreen
 
     override fun getViewModelBindingVariable(): Int = NO_VIEW_MODEL_BINDING_VARIABLE
 
@@ -44,9 +45,17 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         dialog.titleText = getString(R.string.loading)
         dialog.setCancelable(false)
 
+        adapter = ChartAdapter(listDashboard)
+
         getDataBinding().spDesa.isEnabled = false
         getDataBinding().spArea.isEnabled = false
         getDataBinding().spMu.isEnabled = false
+
+        skeletonScreen = Skeleton.bind(getDataBinding().rvChartVisit)
+            .adapter(adapter)
+            .color(R.color.light_transparent)
+            .load(R.layout.item_chart_visit_skeleton)
+            .show()
 
         try {
             dialog.show()
@@ -70,13 +79,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         }
         getDataBinding().btVisit.setOnClickListener {
             val i = Intent(context, VisitActivity::class.java)
-            var id = 0
-            idDesa.forEach {
-                if (it == 48) {
-                    id = it
-                }
-            }
-            i.putExtra(AppConstant.ID_DESA, id.toString())
+            i.putExtra(AppConstant.ID_DESA, idDesa)
             i.putExtra(AppConstant.NAMA_DESA, mDesa)
             i.putExtra(AppConstant.MU, mMu)
             i.putExtra(AppConstant.AREA, mArea)
@@ -86,34 +89,39 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
                 R.anim.exit
             )
         }
+
+        getDataBinding().slChart.setOnRefreshListener {
+            getDashboard(idDesa)
+        }
     }
 
+    @SuppressLint("CheckResult")
     private fun getManagementUnit() {
         dialog.show()
         repo.getManagementUnit(responseLogin?.database ?: return, responseLogin?.ID.toString())
-            .enqueue(object : Callback<List<ResponseManagementUnit>> {
-                override fun onResponse(
-                    call: Call<List<ResponseManagementUnit>>,
-                    response: Response<List<ResponseManagementUnit>>
-                ) {
-                    response.let { res ->
-                        if (res.isSuccessful) {
-                            setManagementUnit(res.body())
-                            dialog.dismiss()
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<List<ResponseManagementUnit>>, t: Throwable) {
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { response ->
+                    setManagementUnit(response)
+                },
+                { t ->
+                    dialog.dismiss()
                     SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText(getString(R.string.error))
-                        .setContentText("Gagal ambil Data Management Unit")
+                        .setContentText("Gagal ambil data management unit, ulangi?")
+                        .setConfirmText(getString(R.string.ya))
+                        .setCancelText(getString(R.string.tidak))
+                        .setConfirmClickListener {
+                            it.dismissWithAnimation()
+                            getManagementUnit()
+                        }
                         .show()
-                    dialog.dismiss()
                     t.printStackTrace()
+                }, {
+                    dialog.dismiss()
                 }
-
-            })
+            )
     }
 
     private fun setManagementUnit(managementUnit: List<ResponseManagementUnit>?) {
@@ -127,45 +135,42 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         }
         getDataBinding().tvMu.visibility = View.GONE
         getDataBinding().spMu.isEnabled = true
-        getDataBinding().spMu.setItems(dataManagementUnit, object : SingleSpinnerListener {
-            override fun onItemsSelected(selectedItem: KeyPairBoolData?) {
-                if (selectedItem?.isSelected == true) getArea(selectedItem.id.toString())
-                val id = selectedItem?.id?.toInt() ?: 0
-                mMu = selectedItem?.name.toString()
+        getDataBinding().spMu.setItems(dataManagementUnit, -1) { items ->
+            items.forEach { keyPairBoolData ->
+                if (keyPairBoolData?.isSelected == true) getArea(keyPairBoolData.id.toString())
+                val id = keyPairBoolData?.id?.toInt() ?: 0
+                mMu = keyPairBoolData?.name.toString()
             }
-
-            override fun onClear() {
-
-            }
-
-        })
+        }
     }
 
+    @SuppressLint("CheckResult")
     private fun getArea(id: String) {
         dialog.show()
         repo.getArea(responseLogin?.database ?: return, id, responseLogin?.ID.toString())
-            .enqueue(object : Callback<List<ResponseArea>> {
-                override fun onResponse(
-                    call: Call<List<ResponseArea>>,
-                    response: Response<List<ResponseArea>>
-                ) {
-                    response.let { res ->
-                        if (res.isSuccessful) {
-                            setArea(res.body())
-                            dialog.dismiss()
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<List<ResponseArea>>, t: Throwable) {
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { response ->
+                    setArea(response)
+                },
+                { t ->
+                    dialog.dismiss()
                     SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText(getString(R.string.error))
-                        .setContentText("Gagal ambil Data Area")
+                        .setContentText("Gagal ambil data area, ulangi?")
+                        .setConfirmText(getString(R.string.ya))
+                        .setCancelText(getString(R.string.tidak))
+                        .setConfirmClickListener {
+                            it.dismissWithAnimation()
+                        }
                         .show()
                     t.printStackTrace()
+                },
+                {
                     dialog.dismiss()
                 }
-            })
+            )
     }
 
     private fun setArea(area: List<ResponseArea>?) {
@@ -179,71 +184,102 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         }
         getDataBinding().tvArea.visibility = View.GONE
         getDataBinding().spArea.isEnabled = true
-        getDataBinding().spArea.setItems(dataArea, object : SingleSpinnerListener {
-            override fun onItemsSelected(selectedItem: KeyPairBoolData?) {
-                if (selectedItem?.isSelected == true) getDesa(selectedItem.id.toString())
-                mArea = selectedItem?.name.toString()
+        getDataBinding().spArea.setItems(dataArea, -1) { items ->
+            items.forEach { keyPairBoolData ->
+                if (keyPairBoolData?.isSelected == true) getDesa(keyPairBoolData.id.toString())
+                mArea = keyPairBoolData?.name.toString()
             }
-
-            override fun onClear() {
-//                getDataBinding().spDesa.set
-            }
-
-        })
+        }
     }
 
+    @SuppressLint("CheckResult")
     private fun getDesa(id: String) {
         dialog.show()
         repo.getDesa(responseLogin?.database ?: return, id, responseLogin?.ID.toString())
-            .enqueue(object : Callback<List<ResponseDesa>> {
-                override fun onResponse(
-                    call: Call<List<ResponseDesa>>,
-                    response: Response<List<ResponseDesa>>
-                ) {
-                    response.let { res ->
-                        if (res.isSuccessful) setDesa(res.body())
-                        dialog.dismiss()
-                    }
-                }
-
-                override fun onFailure(call: Call<List<ResponseDesa>>, t: Throwable) {
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { response ->
+                    setDesa(response)
+                },
+                { t ->
+                    dialog.dismiss()
                     SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText(getString(R.string.error))
-                        .setContentText("Gagal ambil Data Desa")
+                        .setContentText("Gagal ambil data desa, ulangi?")
+                        .setConfirmText(getString(R.string.ya))
+                        .setCancelText(getString(R.string.tidak))
+                        .setConfirmClickListener {
+                            it.dismissWithAnimation()
+                        }
                         .show()
                     t.printStackTrace()
+                },
+                {
                     dialog.dismiss()
                 }
-
-            })
+            )
     }
 
     private fun setDesa(desa: List<ResponseDesa>?) {
         val dataDesa: ArrayList<KeyPairBoolData> = ArrayList()
         desa?.forEach { ds ->
             val h = KeyPairBoolData()
-            h.id = desa.indexOf(ds).toLong()
+            h.id = ds.iD?.toLong() ?: return
             h.name = ds.kelurahan
             h.isSelected = false
             dataDesa.add(h)
         }
         getDataBinding().tvDesa.visibility = View.GONE
         getDataBinding().spDesa.isEnabled = true
-        getDataBinding().spDesa.setLimit(2) {
-            SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText(getString(R.string.error))
-                .setContentText("Anda hanya boleh memilih maximal 2 desa")
-                .show()
-        }
-        getDataBinding().spDesa.setItems(dataDesa) { items ->
-            items.forEach { ds ->
-                if (ds.isSelected) getDataBinding().btVisit.visibility = View.VISIBLE
-                val id = ds.id.toInt()
-                idDesa.add(desa?.get(id)?.iD)
-                mDesa = ds.name
+        getDataBinding().spDesa.setItems(dataDesa, -1) { items ->
+            items.forEach { keyPairBoolData ->
+                if (keyPairBoolData?.isSelected == true) {
+                    idDesa = keyPairBoolData.id.toString()
+                    mDesa = keyPairBoolData.name
+                    getDataBinding().btVisit.visibility = View.VISIBLE
+                    getDataBinding().btRiwayat.visibility = View.VISIBLE
+                    getDataBinding().slChart.visibility = View.VISIBLE
+                    getDashboard(idDesa)
+                } else {
+                    getDataBinding().btVisit.visibility = View.GONE
+                    getDataBinding().btRiwayat.visibility = View.GONE
+                    getDataBinding().slChart.visibility = View.GONE
+                }
             }
-            Log.d("DAT", "" + idDesa)
         }
     }
 
+    @SuppressLint("CheckResult")
+    private fun getDashboard(desa_id: String) {
+        repo.showDashboardVisit(responseLogin?.database.toString(), desa_id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { response ->
+                    setDashboard(response)
+                },
+                { t ->
+                    dialog.dismiss()
+                    getDataBinding().slChart.isRefreshing = false
+                    t.printStackTrace()
+                },
+                {
+                    getDataBinding().slChart.isRefreshing = false
+                    dialog.dismiss()
+                }
+            )
+    }
+
+    private fun setDashboard(response: ResponseDashboardVisit?) {
+        listDashboard.clear()
+        if (response?.result == true) {
+            listDashboard.addAll(response.data.list_detail_komoditas)
+            getDataBinding().empty.visibility = View.GONE
+        } else {
+            getDataBinding().empty.visibility = View.VISIBLE
+        }
+        adapter.notifyDataSetChanged()
+        skeletonScreen.hide()
+    }
 }

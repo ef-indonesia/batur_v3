@@ -28,21 +28,21 @@ interface ApiService {
     fun get_manajemen_unit(
         @Query("database") database: String?,
         @Query("staff_ID") staff_ID: String?
-    ): Call<List<ResponseManagementUnit>>
+    ): Observable<List<ResponseManagementUnit>>
 
     @GET("get_area?lim=1")
     fun get_area(
         @Query("database") database: String?,
         @Query("manajemen_unit_ID") manajemen_unit_ID: String?,
         @Query("staff_ID") staff_ID: String?
-    ): Call<List<ResponseArea>>
+    ): Observable<List<ResponseArea>>
 
     @GET("get_desa?lim=1")
     fun get_desa(
         @Query("database") database: String?,
         @Query("area_ID") area_ID: String?,
         @Query("staff_ID") staff_ID: String?
-    ): Call<List<ResponseDesa>>
+    ): Observable<List<ResponseDesa>>
 
     @GET("get_petani/?lim=1")
     fun get_petani(
@@ -91,13 +91,13 @@ interface ApiService {
     fun get_prioritas_visit(
         @Query("database") database: String?,
         @Query("desa_ID") desa_ID: String?
-    ): Call<ResponsePrioritasVisit>
+    ): Observable<ResponsePrioritasVisit>
 
     @GET("get_incidental_visit")
     fun get_incidental_visit(
         @Query("database") database: String?,
         @Query("kode") kode: String?
-    ): Call<ResponseIncidentalVisit>
+    ): Observable<ResponseIncidentalVisit>
 
     @GET("get_komoditas_baseline")
     fun get_komoditas_baseline(
@@ -105,5 +105,58 @@ interface ApiService {
         @Query("group_komoditas_ID") idKomoditas: String?,
         @Query("lahan_ID") idSubLahan: String?,
         @Query("kode") kode: String?,
-    ): Call<ResponseKomoditasVisit>
+    ): Observable<ResponseKomoditasVisit>
+
+    @GET("get_petani_program_visit")
+    fun get_petani_program_visit(
+        @Query("database") database: String?,
+        @Query("desa_ID") desa_ID: String?
+    ): Observable<ResponseChart>
+
+    @GET("get_check_point")
+    fun get_check_point(
+        @Query("database") database: String?,
+        @Query("check_area_ID") check_area_ID: String?
+    ): Observable<ResponseCheckPoint>
+
+    @GET("get_check_area")
+    fun get_check_area(
+        @Query("database") database: String?,
+        @Query("group_komoditas_ID") group_komoditas_ID: String?,
+        @Query("fase_ID") fase_ID: String?
+    ): Observable<ResponseCheckArea>
+
+    @GET("get_fase")
+    fun get_fase(
+        @Query("database") database: String?,
+        @Query("group_komoditas_ID") group_komoditas_ID: String?
+    ): Observable<ResponseFase>
+
+    @GET("get_komoditas_baru")
+    fun get_komoditas_baru(
+        @Query("database") database: String?,
+        @Query("group_komoditas_ID") group_komoditas_ID: String?
+    ): Observable<ResponseKomoditas>
+
+    @GET("get_program_baru")
+    fun get_program_baru(
+        @Query("database") database: String?,
+        @Query("program_ID") program_ID: String?
+    ): Observable<ResponseProgramBaru>
+
+    @GET("get_program")
+    fun get_program(
+        @Query("database") database: String?
+    ): Observable<ResponseProgram>
+
+    @GET("get_status")
+    fun get_status(
+        @Query("database") database: String?
+    ): Observable<ResponseStatus>
+
+    @GET("show_grafik_petani_program_visit")
+    fun show_grafik_petani_program_visit(
+        @Query("database") database: String?,
+        @Query("desa_ID") desa_ID: String?
+    ): Observable<ResponseDashboardVisit>
 }

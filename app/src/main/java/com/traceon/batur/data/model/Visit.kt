@@ -40,10 +40,8 @@ data class Visit(
     @SerializedName("program_visit_ID")
     @ColumnInfo(name = "program_visit_ID")
     val program_visit_ID: String? = null,
-    @SerializedName("no_urut")
     @ColumnInfo(name = "no_urut")
     var no_urut: Int = 0,
-    @SerializedName("warna")
     @ColumnInfo(name = "warna")
     var warna: String? = null,
     @PrimaryKey(autoGenerate = true)

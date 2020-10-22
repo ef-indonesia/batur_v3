@@ -1,6 +1,7 @@
 package com.traceon.batur.data.adapter
 
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -46,6 +47,7 @@ class VisitAdapter @Inject constructor(
 
             itemView.setOnClickListener {
                 listener(visit)
+                Log.d("VISIT","Klik bro")
             }
         }
     }

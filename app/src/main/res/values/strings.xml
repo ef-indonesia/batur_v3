@@ -31,4 +31,25 @@
     <string name="visit">Visit</string>
     <string name="masukkan_kode_lahan">Masukkan kode lahan</string>
     <string name="input_visit">Input Visit</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="persiapan">Persiapan</string>
+    <string name="pembibitan">Pembibitan</string>
+    <string name="panen">Panen</string>
+    <string name="petani">Petani</string>
+    <string name="data_petani_komoditas">Data Petani %1$s</string>
+    <string name="jumlah_petani">Jumlah Petani : %1$d Orang</string>
+    <string name="pemeliharaan">Pemeliharaan</string>
+    <string name="pilih_program">Pilih Program</string>
+    <string name="nomor_lahan">Nomor Lahan</string>
+    <string name="pilih_komoditas_baseline">Pilih Komoditas Baseline</string>
+    <string name="pilih_komoditas">Pilih Komoditas</string>
+    <string name="pilih_fase">Pilih Fase</string>
+    <string name="pilih_cek_area">Pilih Cek Area</string>
+    <string name="photo">Photo</string>
+    <string name="catatan">Catatan</string>
+    <string name="catatan_hint">Masukan catatan, contoh: Buah matang tidak merata, sebagian besar masih belum matang</string>
+    <string name="pilih_komoditas_baru">Pilih Komoditas Baru</string>
+    <string name="cek_area">Cek Area</string>
+    <string name="fase">Fase</string>
+    <string name="simpan">Simpan</string>
 </resources>

@@ -114,19 +114,20 @@
 
             <com.traceon.batur.ui.base.SquareLayout
                 android:id="@+id/rl_top_left"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimens_5"
                 android:background="@drawable/bg_round"
                 android:gravity="center"
+                android:padding="@dimen/dimens_30"
                 app:layout_constraintBottom_toTopOf="@id/tv_menu_baseline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dimens_60"
+                    android:layout_height="@dimen/dimens_60"
                     android:layout_centerInParent="true"
                     android:background="@color/colorPrimary"
                     android:padding="@dimen/dimens_10"
@@ -157,18 +158,19 @@
 
             <com.traceon.batur.ui.base.SquareLayout
                 android:id="@+id/rl_top_right"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimens_5"
                 android:background="@drawable/bg_round"
+                android:padding="@dimen/dimens_30"
                 app:layout_constraintBottom_toTopOf="@id/tv_menu_visit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dimens_60"
+                    android:layout_height="@dimen/dimens_60"
                     android:layout_centerInParent="true"
                     android:background="@color/colorPrimary"
                     android:padding="@dimen/dimens_10"
@@ -199,18 +201,19 @@
 
             <com.traceon.batur.ui.base.SquareLayout
                 android:id="@+id/rl_bottom_left"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimens_5"
                 android:background="@drawable/bg_round"
+                android:padding="@dimen/dimens_30"
                 app:layout_constraintBottom_toTopOf="@id/tv_menu_tracking"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dimens_60"
+                    android:layout_height="@dimen/dimens_60"
                     android:layout_centerInParent="true"
                     android:background="@color/colorPrimary"
                     android:padding="@dimen/dimens_10"
@@ -241,18 +244,19 @@
 
             <com.traceon.batur.ui.base.SquareLayout
                 android:id="@+id/rl_bottom_right"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimens_5"
                 android:background="@drawable/bg_round"
+                android:padding="@dimen/dimens_30"
                 app:layout_constraintBottom_toTopOf="@id/tv_menu_impact"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dimens_60"
+                    android:layout_height="@dimen/dimens_60"
                     android:layout_centerInParent="true"
                     android:background="@color/colorPrimary"
                     android:padding="@dimen/dimens_10"

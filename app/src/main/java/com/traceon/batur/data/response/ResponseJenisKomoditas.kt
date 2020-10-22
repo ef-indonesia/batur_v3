@@ -177,7 +177,7 @@ data class ResponseJenisKomoditas(
     var kodeSatuan: String? = null,
 
     @SerializedName("satuan")
-    var satuan: List<Satuan?>? = null,
+    var satuan: List<Satuan>? = null,
 
     @SerializedName("nama_slovenian")
     var namaSlovenian: String? = null,

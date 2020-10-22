@@ -1,7 +1,9 @@
 package com.traceon.batur.ui.visit
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -14,19 +16,16 @@ import com.traceon.batur.R
 import com.traceon.batur.data.adapter.VisitAdapter
 import com.traceon.batur.data.model.Visit
 import com.traceon.batur.data.repo.RemoteRepository
-import com.traceon.batur.data.response.ResponseIncidentalVisit
 import com.traceon.batur.data.response.ResponseLogin
-import com.traceon.batur.data.response.ResponsePrioritasVisit
 import com.traceon.batur.databinding.ActivityVisitBinding
 import com.traceon.batur.ui.base.BaseActivity
 import com.traceon.batur.ui.base.ScanQrCode
 import com.traceon.batur.utils.AppConstant
 import com.traceon.batur.utils.Helper
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.toolbar.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 @AndroidEntryPoint
 class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
@@ -54,7 +53,7 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
 
         skeletonScreen = Skeleton.bind(getDataBinding().rvVisit)
             .adapter(adapter)
-            .count(R.color.skeleton_shimer)
+            .color(R.color.skeleton_shimer)
             .load(R.layout.item_visit_skeleton)
             .show()
 
@@ -96,40 +95,33 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    @SuppressLint("CheckResult")
     private fun toVisitDetal(idLahan: String) {
-        repo.getIncidentalVisit(
-            responseLogin?.database.toString(),
-            idLahan
-        ).enqueue(object : Callback<ResponseIncidentalVisit> {
-            override fun onResponse(
-                call: Call<ResponseIncidentalVisit>,
-                response: Response<ResponseIncidentalVisit>
-            ) {
-                response.let { res ->
-                    if (res.isSuccessful) {
-                        if (res.body()?.result == true) {
-                            val i = Intent(this@VisitActivity, InputVisitActivity::class.java)
-                            i.putExtra(AppConstant.ID, idLahan)
-                            startActivity(i)
-                            overridePendingTransition(
-                                R.anim.enter,
-                                R.anim.exit
-                            )
-                        } else {
-                            SweetAlertDialog(this@VisitActivity, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(getString(R.string.error))
-                                .setContentText(res.body()?.message)
-                                .show()
-                        }
+        repo.getIncidentalVisit(responseLogin?.database.toString(), idLahan)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { response ->
+                    if (response?.result == true) {
+                        Log.d("VISIT DETAIL", "INCIDENTAL BRO")
+                        val i = Intent(this@VisitActivity, InputVisitActivity::class.java)
+                        i.putExtra(AppConstant.ID, idLahan)
+                        startActivity(i)
+                        overridePendingTransition(
+                            R.anim.enter,
+                            R.anim.exit
+                        )
+                    } else {
+                        SweetAlertDialog(this@VisitActivity, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getString(R.string.error))
+                            .setContentText(response.message)
+                            .show()
                     }
+                },
+                { t ->
+                    t.printStackTrace()
                 }
-            }
-
-            override fun onFailure(call: Call<ResponseIncidentalVisit>, t: Throwable) {
-                t.printStackTrace()
-            }
-
-        })
+            )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -140,44 +132,40 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
         }
     }
 
+    @SuppressLint("CheckResult")
     private fun loadData(desa_id: String) {
         val warna = resources.getStringArray(R.array.warna)
         repo.getPrioritasVisit(responseLogin?.database ?: return, desa_id)
-            .enqueue(object : Callback<ResponsePrioritasVisit> {
-                override fun onResponse(
-                    call: Call<ResponsePrioritasVisit>,
-                    response: Response<ResponsePrioritasVisit>
-                ) {
-                    response.let { res ->
-                        if (res.isSuccessful) {
-                            var no = 0
-                            listVisit.clear()
-                            res.body()?.data?.forEach { vist ->
-                                no++
-                                vist.no_urut = no
-                                vist.warna = warna[no.minus(1)]
-                                listVisit.add(vist)
-                            }
-
-                            adapter.notifyDataSetChanged()
-                            skeletonScreen.hide()
-                            getDataBinding().slVisit.isRefreshing = false
-                            if (res.body()?.data?.size == 0) getDataBinding().empty.visibility =
-                                View.VISIBLE else getDataBinding().empty.visibility = View.GONE
-                        } else {
-                            SweetAlertDialog(this@VisitActivity, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(getString(R.string.error))
-                                .setContentText(res.body()?.message)
-                                .show()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { response ->
+                    if (response.result == true) {
+                        var no = 0
+                        listVisit.clear()
+                        response.data?.forEach { vist ->
+                            no++
+                            vist.no_urut = no
+                            vist.warna = warna[no.minus(1)]
+                            listVisit.add(vist)
                         }
-                    }
-                }
 
-                override fun onFailure(call: Call<ResponsePrioritasVisit>, t: Throwable) {
+                        adapter.notifyDataSetChanged()
+                        skeletonScreen.hide()
+                        getDataBinding().slVisit.isRefreshing = false
+                        if (response.data?.size == 0) getDataBinding().empty.visibility =
+                            View.VISIBLE else getDataBinding().empty.visibility = View.GONE
+                    } else {
+                        SweetAlertDialog(this@VisitActivity, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getString(R.string.error))
+                            .setContentText(response.message)
+                            .show()
+                    }
+                },
+                { t ->
                     t.printStackTrace()
                 }
-
-            })
+            )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

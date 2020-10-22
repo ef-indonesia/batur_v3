@@ -23,10 +23,11 @@ class SplashActivity : AppCompatActivity() {
 
         Helper.setLightStatusBar(window.decorView, this, true)
 
-//        skeletonScreen = Skeleton.bind(iv_logo)
-//            .duration(1000)
-//            .color(R.color.skeleton_shimer)
-//            .show()
+        skeletonScreen = Skeleton.bind(iv_logo)
+            .load(R.layout.activity_empty)
+            .duration(1000)
+            .color(R.color.skeleton_shimer)
+            .show()
 
         object : CountDownTimer(3000, 1000) {
             override fun onTick(p0: Long) {

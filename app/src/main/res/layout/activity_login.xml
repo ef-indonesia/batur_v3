@@ -84,6 +84,7 @@
         android:layout_marginStart="@dimen/dimens_30"
         android:layout_marginTop="@dimen/dimens_20"
         android:layout_marginEnd="@dimen/dimens_30"
+        android:backgroundTint="@color/colorPrimary"
         android:padding="@dimen/dimens_10"
         android:text="@string/login"
         android:textStyle="bold"

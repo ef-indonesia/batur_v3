@@ -13,50 +13,51 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimens_10"
-                android:layout_marginTop="@dimen/dimens_10"
                 android:layout_marginEnd="@dimen/dimens_10"
-                android:minHeight="140dp"
-                app:cardCornerRadius="@dimen/dimens_20"
+                android:theme="@style/Theme.MaterialComponents.DayNight"
+                app:cardCornerRadius="@dimen/dimens_15"
                 app:cardElevation="@dimen/dimens_5"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:minHeight="140dp"
                     android:paddingStart="@dimen/dimens_5"
-                    android:paddingTop="@dimen/dimens_10"
+                    android:paddingTop="@dimen/dimens_5"
                     android:paddingEnd="@dimen/dimens_5"
-                    android:paddingBottom="@dimen/dimens_10">
+                    android:paddingBottom="@dimen/dimens_5">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dimens_5"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/view_cv"
+                        app:layout_constraintEnd_toStartOf="@id/iv_simbol"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/cl_spinner_mu"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimens_10"
-                            android:layout_marginBottom="@dimen/dimens_10"
+                            android:layout_height="@dimen/dimens_35"
                             android:background="@drawable/bg_spinner"
-                            app:layout_constraintBottom_toTopOf="@id/cl_spinner_area">
+                            app:layout_constraintTop_toTopOf="parent">
 
-                            <com.androidbuts.multispinnerfilter.SingleSpinnerSearch
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
                                 android:id="@+id/sp_mu"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
                                 android:background="@android:color/transparent"
+                                android:spinnerMode="dropdown"
+                                android:textSize="12sp"
                                 app:hintText="@string/management_unit"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -68,37 +69,39 @@
                                 android:layout_marginStart="@dimen/dimens_5"
                                 android:background="@null"
                                 android:hint="@string/management_unit"
-                                android:textSize="12sp"
-                                app:layout_constraintBottom_toBottomOf="@id/sp_mu"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="@id/sp_mu"
-                                app:layout_constraintTop_toTopOf="@id/sp_mu" />
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
                                 android:src="@drawable/ic_arrow_down"
-                                app:layout_constraintBottom_toBottomOf="@id/sp_mu"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@id/sp_mu" />
+                                app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/cl_spinner_area"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimens_10"
+                            android:layout_height="@dimen/dimens_35"
+                            android:layout_marginTop="@dimen/dimens_5"
                             android:background="@drawable/bg_spinner"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toBottomOf="@id/cl_spinner_mu">
 
-                            <com.androidbuts.multispinnerfilter.SingleSpinnerSearch
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
                                 android:id="@+id/sp_area"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
                                 android:background="@android:color/transparent"
                                 android:enabled="false"
                                 android:gravity="center_vertical"
+                                android:spinnerMode="dropdown"
+                                android:textSize="12sp"
                                 app:hintText="@string/area"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,36 +115,37 @@
                                 android:layout_marginStart="@dimen/dimens_5"
                                 android:background="@null"
                                 android:hint="@string/area"
-                                android:textSize="12sp"
-                                app:layout_constraintBottom_toBottomOf="@id/sp_area"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="@id/sp_area"
-                                app:layout_constraintTop_toTopOf="@id/sp_area" />
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
                                 android:src="@drawable/ic_arrow_down"
-                                app:layout_constraintBottom_toBottomOf="@id/sp_area"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@id/sp_area" />
+                                app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/cl_spinner_desa"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimens_10"
-                            android:layout_marginTop="@dimen/dimens_10"
+                            android:layout_height="@dimen/dimens_35"
+                            android:layout_marginTop="@dimen/dimens_5"
                             android:background="@drawable/bg_spinner"
                             app:layout_constraintTop_toBottomOf="@id/cl_spinner_area">
 
-                            <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
                                 android:id="@+id/sp_desa"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
                                 android:background="@android:color/transparent"
-                                android:spinnerMode="dialog"
+                                android:spinnerMode="dropdown"
+                                android:textSize="12sp"
                                 app:hintText="@string/desa"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +159,6 @@
                                 android:layout_marginStart="@dimen/dimens_5"
                                 android:background="@null"
                                 android:hint="@string/desa"
-                                android:textSize="12sp"
                                 app:layout_constraintBottom_toBottomOf="@id/sp_desa"
                                 app:layout_constraintStart_toStartOf="@id/sp_desa"
                                 app:layout_constraintTop_toTopOf="@id/sp_desa" />
@@ -163,6 +166,7 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
                                 android:src="@drawable/ic_arrow_down"
                                 app:layout_constraintBottom_toBottomOf="@id/sp_desa"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -176,26 +180,24 @@
                         android:id="@+id/view_cv"
                         android:layout_width="1dp"
                         android:layout_height="1dp"
-                        android:layout_marginStart="@dimen/dimens_30"
+                        android:layout_marginStart="@dimen/dimens_70"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:scaleType="centerCrop"
+                        android:id="@+id/iv_simbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_dashboard"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/view_cv"
                         app:layout_constraintTop_toTopOf="parent" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bt_submit_baseline"
@@ -217,7 +219,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:padding="@dimen/dimens_10"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_choice">
 

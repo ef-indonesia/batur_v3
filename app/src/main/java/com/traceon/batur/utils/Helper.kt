@@ -2,18 +2,29 @@ package com.traceon.batur.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
+import android.os.Environment
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.google.gson.Gson
 import com.traceon.batur.data.response.ResponseLogin
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.OutputStream
 import java.net.InetSocketAddress
 import java.net.Socket
 
@@ -157,5 +168,57 @@ object Helper {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
+    }
+
+    fun onFetchBaseline(context: Context, url: String, path: String) {
+        val file = url.substring(url.lastIndexOf("/") + 1)
+        Log.d("DL", "URL : $url")
+        Thread {
+            Glide.with(context)
+                .asBitmap()
+                .load(url)
+                .into(object : SimpleTarget<Bitmap?>(100, 100) {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap?>?
+                    ) {
+                        saveImage(context, resource, file, path)
+                    }
+                })
+        }.start()
+    }
+
+    private fun saveImage(context: Context, image: Bitmap, file: String, path: String): String? {
+        var savedImagePath: String? = null
+        val storageDir = File(Environment.DIRECTORY_PICTURES.plus("/").plus(path))
+
+        var success = true
+        if (!storageDir.exists()) {
+            success = storageDir.mkdirs()
+        }
+        if (success) {
+            val imageFile = File(storageDir, file)
+            savedImagePath = imageFile.absolutePath
+            try {
+                val fOut: OutputStream = FileOutputStream(imageFile)
+                image.compress(Bitmap.CompressFormat.JPEG, 100, fOut)
+                fOut.close()
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+
+            // Add the image to the system gallery
+            galleryAddPic(savedImagePath, context)
+            Log.d("DL", "IMAGE SAVED TO: $savedImagePath")
+        }
+        return savedImagePath
+    }
+
+    private fun galleryAddPic(imagePath: String?, context: Context) {
+        val mediaScanIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
+        val f = File(imagePath.toString())
+        val contentUri: Uri = Uri.fromFile(f)
+        mediaScanIntent.data = contentUri
+        context.sendBroadcast(mediaScanIntent)
     }
 }
