@@ -346,7 +346,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimens_10"
-                    android:text="Checklist Monitoring"
+                    android:text="@string/checklist_monitoring"
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/cl_spinner_cek_area" />
 
@@ -361,16 +361,12 @@
                     app:layout_constraintBottom_toTopOf="@id/tv_catatan"
                     app:layout_constraintTop_toBottomOf="@id/tv_monitoring">
 
-                    <FrameLayout
-                        android:id="@+id/fl_container"
+                    <LinearLayout
+                        android:id="@+id/ll_check_point"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/dimens_10" />
-
-                    <RelativeLayout
-                        android:id="@+id/rl_checklist"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:orientation="vertical"
+                        android:padding="@dimen/dimens_10" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -394,7 +390,7 @@
                     android:hint="@string/catatan_hint"
                     android:paddingStart="@dimen/dimens_10"
                     android:paddingEnd="@dimen/dimens_10"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     app:layout_constraintTop_toBottomOf="@id/tv_catatan" />
 
                 <TextView
@@ -434,7 +430,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimens_20"
                     android:layout_marginBottom="@dimen/dimens_20"
-                    android:background="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimary"
                     android:text="@string/simpan"
                     android:textStyle="bold"
                     app:cornerRadius="@dimen/dimens_15"

@@ -46,7 +46,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/cl_spinner_mu"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimens_35"
+                            android:layout_height="@dimen/dimens_40"
                             android:background="@drawable/bg_spinner"
                             app:layout_constraintTop_toTopOf="parent">
 
@@ -56,7 +56,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimens_5"
                                 android:background="@android:color/transparent"
-                                android:spinnerMode="dropdown"
+                                android:spinnerMode="dialog"
                                 android:textSize="12sp"
                                 app:hintText="@string/management_unit"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -87,7 +87,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/cl_spinner_area"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimens_35"
+                            android:layout_height="@dimen/dimens_40"
                             android:layout_marginTop="@dimen/dimens_5"
                             android:background="@drawable/bg_spinner"
                             app:layout_constraintTop_toBottomOf="@id/cl_spinner_mu">
@@ -100,7 +100,7 @@
                                 android:background="@android:color/transparent"
                                 android:enabled="false"
                                 android:gravity="center_vertical"
-                                android:spinnerMode="dropdown"
+                                android:spinnerMode="dialog"
                                 android:textSize="12sp"
                                 app:hintText="@string/area"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -133,7 +133,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/cl_spinner_desa"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimens_35"
+                            android:layout_height="@dimen/dimens_40"
                             android:layout_marginTop="@dimen/dimens_5"
                             android:background="@drawable/bg_spinner"
                             app:layout_constraintTop_toBottomOf="@id/cl_spinner_area">
@@ -144,7 +144,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimens_5"
                                 android:background="@android:color/transparent"
-                                android:spinnerMode="dropdown"
+                                android:spinnerMode="dialog"
                                 android:textSize="12sp"
                                 app:hintText="@string/desa"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -208,7 +208,7 @@
                 android:layout_marginTop="@dimen/dimens_10"
                 android:layout_marginEnd="@dimen/dimens_10"
                 android:enabled="false"
-                android:text="Lanjut"
+                android:text="@string/lanjut"
                 android:textStyle="bold"
                 app:cornerRadius="@dimen/dimens_5"
                 app:layout_constraintTop_toBottomOf="@id/cv_menu" />

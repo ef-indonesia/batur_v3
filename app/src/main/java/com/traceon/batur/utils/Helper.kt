@@ -1,6 +1,8 @@
 package com.traceon.batur.utils
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,15 +10,18 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.NotificationCompat
 import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.gson.Gson
+import com.traceon.batur.R
 import com.traceon.batur.data.response.ResponseLogin
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -220,5 +225,36 @@ object Helper {
         val contentUri: Uri = Uri.fromFile(f)
         mediaScanIntent.data = contentUri
         context.sendBroadcast(mediaScanIntent)
+    }
+
+    fun setNotif(
+        context: Context,
+        channelId: String,
+        notifId: Int,
+        title: String,
+        message: String,
+        intermediate: Boolean
+    ) {
+        val ncb = NotificationCompat.Builder(context, channelId)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setProgress(0, 0, intermediate)
+            .setSmallIcon(R.drawable.ic_notifications)
+            .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+
+        val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val nc = NotificationChannel(
+                channelId,
+                context.getString(R.string.app_name),
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            nc.enableLights(true)
+            nc.enableVibration(true)
+
+            ncb.setChannelId(channelId)
+            nm.createNotificationChannel(nc)
+        }
+        nm.notify(notifId, ncb.build())
     }
 }

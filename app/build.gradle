@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 30
@@ -114,6 +115,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$arch_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$arch_version"
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$arch_version"
+    //noinspection LifecycleAnnotationProcessorWithJava8
     kapt "androidx.lifecycle:lifecycle-compiler:$arch_version"
 
     //chart

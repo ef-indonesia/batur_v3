@@ -3,6 +3,7 @@ package com.traceon.batur.ui.visit
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.View
+import androidx.fragment.app.viewModels
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bytcode.lib.spinner.multiselectspinner.data.KeyPairBoolData
 import com.ethanhua.skeleton.Skeleton
@@ -21,7 +22,6 @@ import io.reactivex.schedulers.Schedulers
 
 @AndroidEntryPoint
 class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
-
     private lateinit var repo: RemoteRepository
     private var responseLogin: ResponseLogin? = null
     private lateinit var dialog: SweetAlertDialog
@@ -31,6 +31,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
     private lateinit var mArea: String
     private lateinit var adapter: ChartAdapter
     private var listDashboard: ArrayList<DashboardChart> = ArrayList()
+    private val viewModel: VisitViewModel by viewModels()
     private lateinit var skeletonScreen: SkeletonScreen
 
     override fun getViewModelBindingVariable(): Int = NO_VIEW_MODEL_BINDING_VARIABLE
@@ -98,7 +99,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
     @SuppressLint("CheckResult")
     private fun getManagementUnit() {
         dialog.show()
-        repo.getManagementUnit(responseLogin?.database ?: return, responseLogin?.ID.toString())
+        repo.getManagementUnit(responseLogin?.database.toString(), responseLogin?.ID.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -109,7 +110,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
                     dialog.dismiss()
                     SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText(getString(R.string.error))
-                        .setContentText("Gagal ambil data management unit, ulangi?")
+                        .setContentText(getString(R.string.gagal_ambil_data))
                         .setConfirmText(getString(R.string.ya))
                         .setCancelText(getString(R.string.tidak))
                         .setConfirmClickListener {
@@ -128,7 +129,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         val dataManagementUnit: ArrayList<KeyPairBoolData> = ArrayList()
         managementUnit?.forEach { mu ->
             val h = KeyPairBoolData()
-            h.id = mu.iD?.toLong() ?: return
+            h.id = mu.iD.toString().toLong()
             h.name = mu.nama
             h.isSelected = false
             dataManagementUnit.add(h)
@@ -137,9 +138,10 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         getDataBinding().spMu.isEnabled = true
         getDataBinding().spMu.setItems(dataManagementUnit, -1) { items ->
             items.forEach { keyPairBoolData ->
-                if (keyPairBoolData?.isSelected == true) getArea(keyPairBoolData.id.toString())
-                val id = keyPairBoolData?.id?.toInt() ?: 0
-                mMu = keyPairBoolData?.name.toString()
+                if (keyPairBoolData?.isSelected == true) {
+                    getArea(keyPairBoolData.id.toString())
+                    mMu = keyPairBoolData.name.toString()
+                }
             }
         }
     }
@@ -147,7 +149,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
     @SuppressLint("CheckResult")
     private fun getArea(id: String) {
         dialog.show()
-        repo.getArea(responseLogin?.database ?: return, id, responseLogin?.ID.toString())
+        repo.getArea(responseLogin?.database.toString(), id, responseLogin?.ID.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -158,7 +160,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
                     dialog.dismiss()
                     SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText(getString(R.string.error))
-                        .setContentText("Gagal ambil data area, ulangi?")
+                        .setContentText(getString(R.string.gagal_ambil_data))
                         .setConfirmText(getString(R.string.ya))
                         .setCancelText(getString(R.string.tidak))
                         .setConfirmClickListener {
@@ -177,7 +179,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         val dataArea: ArrayList<KeyPairBoolData> = ArrayList()
         area?.forEach { ar ->
             val h = KeyPairBoolData()
-            h.id = ar.iD?.toLong() ?: return
+            h.id = ar.iD.toString().toLong()
             h.name = ar.nama
             h.isSelected = false
             dataArea.add(h)
@@ -186,8 +188,10 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         getDataBinding().spArea.isEnabled = true
         getDataBinding().spArea.setItems(dataArea, -1) { items ->
             items.forEach { keyPairBoolData ->
-                if (keyPairBoolData?.isSelected == true) getDesa(keyPairBoolData.id.toString())
-                mArea = keyPairBoolData?.name.toString()
+                if (keyPairBoolData?.isSelected == true) {
+                    getDesa(keyPairBoolData.id.toString())
+                    mArea = keyPairBoolData.name.toString()
+                }
             }
         }
     }
@@ -195,7 +199,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
     @SuppressLint("CheckResult")
     private fun getDesa(id: String) {
         dialog.show()
-        repo.getDesa(responseLogin?.database ?: return, id, responseLogin?.ID.toString())
+        repo.getDesa(responseLogin?.database.toString(), id, responseLogin?.ID.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -206,7 +210,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
                     dialog.dismiss()
                     SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText(getString(R.string.error))
-                        .setContentText("Gagal ambil data desa, ulangi?")
+                        .setContentText(getString(R.string.gagal_ambil_data))
                         .setConfirmText(getString(R.string.ya))
                         .setCancelText(getString(R.string.tidak))
                         .setConfirmClickListener {
@@ -225,7 +229,7 @@ class VisitFragment : BaseFragment<FragmentVisitBinding, VisitViewModel>() {
         val dataDesa: ArrayList<KeyPairBoolData> = ArrayList()
         desa?.forEach { ds ->
             val h = KeyPairBoolData()
-            h.id = ds.iD?.toLong() ?: return
+            h.id = ds.iD.toString().toLong()
             h.name = ds.kelurahan
             h.isSelected = false
             dataDesa.add(h)

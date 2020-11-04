@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="@dimen/dimens_20"
+            android:layout_marginBottom="@dimen/dimens_10"
             app:cardBackgroundColor="@color/traceon_sky_blue"
             app:cardCornerRadius="@dimen/dimens_20"
             app:cardElevation="@dimen/dimens_5">

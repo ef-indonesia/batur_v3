@@ -22,6 +22,7 @@ import com.traceon.batur.ui.base.BaseActivity
 import com.traceon.batur.ui.base.ScanQrCode
 import com.traceon.batur.utils.AppConstant
 import com.traceon.batur.utils.Helper
+import com.traceon.batur.utils.SoftInputAssist
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -35,6 +36,7 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
     private var listVisit: ArrayList<Visit> = ArrayList()
     private val viewModel: VisitViewModel by viewModels()
     private lateinit var skeletonScreen: SkeletonScreen
+    private lateinit var softInputAssist: SoftInputAssist
 
     override fun getViewModelBindingVariable(): Int = NO_VIEW_MODEL_BINDING_VARIABLE
 
@@ -43,6 +45,13 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
     override fun init() {
         setSupportActionBar(toolbar)
         Helper.setStatusBar(this)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.toolbar)) { _, insets ->
+            toolbar.setMarginTop(insets.systemWindowInsetTop)
+            insets.consumeSystemWindowInsets()
+        }
+
+        softInputAssist = SoftInputAssist(this)
 
         repo = RemoteRepository()
         responseLogin = Helper.getSesiLogin(this)
@@ -56,12 +65,6 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
             .color(R.color.skeleton_shimer)
             .load(R.layout.item_visit_skeleton)
             .show()
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.toolbar)) { _, insets ->
-            toolbar.setMarginTop(insets.systemWindowInsetTop)
-            insets.consumeSystemWindowInsets()
-        }
 
         val idDesa = intent?.getStringExtra(AppConstant.ID_DESA).toString()
         val mu = intent?.getStringExtra(AppConstant.MU).toString()
@@ -134,27 +137,13 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
 
     @SuppressLint("CheckResult")
     private fun loadData(desa_id: String) {
-        val warna = resources.getStringArray(R.array.warna)
         repo.getPrioritasVisit(responseLogin?.database ?: return, desa_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { response ->
                     if (response.result == true) {
-                        var no = 0
-                        listVisit.clear()
-                        response.data?.forEach { vist ->
-                            no++
-                            vist.no_urut = no
-                            vist.warna = warna[no.minus(1)]
-                            listVisit.add(vist)
-                        }
-
-                        adapter.notifyDataSetChanged()
-                        skeletonScreen.hide()
-                        getDataBinding().slVisit.isRefreshing = false
-                        if (response.data?.size == 0) getDataBinding().empty.visibility =
-                            View.VISIBLE else getDataBinding().empty.visibility = View.GONE
+                        setData(response.data)
                     } else {
                         SweetAlertDialog(this@VisitActivity, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(getString(R.string.error))
@@ -166,6 +155,24 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
                     t.printStackTrace()
                 }
             )
+    }
+
+    private fun setData(data: List<Visit>?) {
+        val warna = resources.getStringArray(R.array.warna)
+        var no = 0
+        listVisit.clear()
+        data?.forEach { vist ->
+            no++
+            vist.no_urut = no
+            vist.warna = warna[no.minus(1)]
+            listVisit.add(vist)
+        }
+
+        adapter.notifyDataSetChanged()
+        skeletonScreen.hide()
+        getDataBinding().slVisit.isRefreshing = false
+        if (data?.size == 0) getDataBinding().empty.visibility =
+            View.VISIBLE else getDataBinding().empty.visibility = View.GONE
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -186,5 +193,20 @@ class VisitActivity : BaseActivity<ActivityVisitBinding, VisitViewModel>() {
         val menuLayoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
         menuLayoutParams.setMargins(0, marginTop, 0, 0)
         this.layoutParams = menuLayoutParams
+    }
+
+    override fun onResume() {
+        super.onResume()
+        softInputAssist.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        softInputAssist.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        softInputAssist.onDestroy()
     }
 }
