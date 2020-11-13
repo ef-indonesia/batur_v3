@@ -11,9 +11,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -29,8 +32,13 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.traceon.batur.R
 import com.traceon.batur.data.response.ResponseLogin
+import com.traceon.batur.ui.baseline.BaselineFragment
+import com.traceon.batur.ui.baseline.petani.PetaniFragment
+import com.traceon.batur.ui.home.HomeFragment
 import com.traceon.batur.ui.login.LoginActivity
 import com.traceon.batur.ui.me.PasswordActivity
+import com.traceon.batur.ui.visit.VisitFragment
+import com.traceon.batur.utils.AppConstant
 import com.traceon.batur.utils.Helper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.toolbar.*
@@ -80,17 +88,15 @@ class MainActivity : AppCompatActivity() {
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home,
-                R.id.nav_baseline,
-                R.id.nav_visit
-            ), drawerLayout
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-        bottomNav.setupWithNavController(navController)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
         navView.getHeaderView(0).findViewById<TextView>(R.id.tv_name).text =
             responseLogin?.nama_lengkap
         navView.getHeaderView(0).findViewById<LinearLayout>(R.id.ll_sign_out).setOnClickListener {
@@ -104,11 +110,28 @@ class MainActivity : AppCompatActivity() {
                 R.anim.exit
             )
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        bottomNav.setOnNavigationItemSelectedListener { menu ->
+            when (menu.itemId) {
+                R.id.nav_home -> {
+                    loadFragment(HomeFragment())
+                }
+                R.id.nav_baseline -> {
+                    if (Helper.getBool(AppConstant.BASELINE, this)) {
+                        loadFragment(PetaniFragment())
+                    } else {
+                        loadFragment(BaselineFragment())
+                    }
+                }
+                R.id.nav_visit -> {
+                    loadFragment(VisitFragment())
+                }
+            }
+            true
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        if (savedInstanceState == null) {
+            bottomNav.selectedItemId = R.id.nav_home
+        }
     }
 
     override fun onBackPressed() {
@@ -150,5 +173,11 @@ class MainActivity : AppCompatActivity() {
             .setCancelButton(getString(R.string.tidak), null)
             .show()
 
+    }
+
+    fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fl_container, fragment)
+            .commit()
     }
 }

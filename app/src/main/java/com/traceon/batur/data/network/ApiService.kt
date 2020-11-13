@@ -1,6 +1,5 @@
 package com.traceon.batur.data.network
 
-import com.traceon.batur.data.model.Petani
 import com.traceon.batur.data.response.*
 import io.reactivex.Observable
 import okhttp3.MultipartBody
@@ -44,26 +43,37 @@ interface ApiService {
         @Query("staff_ID") staff_ID: String?
     ): Observable<List<ResponseDesa>>
 
-    @GET("get_petani/?lim=1")
-    fun get_petani(
+    @GET("get_kode_referal?lim=1")
+    fun get_kode_referal(
+        @Query("database") database: String?,
+        @Query("staff_ID") staff_ID: String?
+    ): Observable<ResponseReferral>
+
+    @GET("get_petani_new/?lim=1")
+    fun get_petani_new(
         @Query("database") database: String?,
         @Query("desa_ID") desa_ID: String?,
         @Query("ID") petani_ID: String?
-    ): Call<List<Petani>>
+    ): Observable<ResponsePetani>
 
-    @GET("get_lahan/?lim=1")
-    fun get_lahan(
+
+    @GET("get_lahan_new/?lim=1")
+    fun get_lahan_new(
         @Query("database") database: String?,
-        @Query("petani_ID") petani_ID: String?,
-        @Query("desa_ID") desa_ID: String?,
-        @Query("kode") kode: String?
-    ): Call<List<ResponseLahan>>
+        @Query("petani_ID") petani_ID: String?
+    ): Observable<ResponseLahan>
+
+    @GET("get_baseline_in/?lim=1")
+    fun get_baseline_in(
+        @Query("database") database: String?,
+        @Query("petani_ID") petani_ID: String?
+    ): Observable<ResponseBaseline>
 
     @GET("get_komoditas?lim=1")
     fun get_komoditas(
         @Query("database") database: String?,
         @Query("sub_kategori_komoditas_ID") sub_kategori_komoditas_ID: String?
-    ): Call<List<ResponseJenisKomoditas>>
+    ): Observable<ResponseKomoditas>
 
     @GET("delete_image")
     fun delete_image(
@@ -91,6 +101,13 @@ interface ApiService {
     fun get_prioritas_visit(
         @Query("database") database: String?,
         @Query("desa_ID") desa_ID: String?
+    ): Observable<ResponsePrioritasVisit>
+
+    @GET("get_prioritas_visit_new")
+    fun get_prioritas_visit_new(
+        @Query("database") database: String?,
+        @Query("desa_ID") desa_ID: String?,
+        @Query("frequent") frequent: String?
     ): Observable<ResponsePrioritasVisit>
 
     @GET("get_incidental_visit")
@@ -136,7 +153,7 @@ interface ApiService {
     fun get_komoditas_baru(
         @Query("database") database: String?,
         @Query("group_komoditas_ID") group_komoditas_ID: String?
-    ): Observable<ResponseKomoditas>
+    ): Observable<ResponseKomoditasBaru>
 
     @GET("get_program_baru")
     fun get_program_baru(
@@ -159,4 +176,10 @@ interface ApiService {
         @Query("database") database: String?,
         @Query("desa_ID") desa_ID: String?
     ): Observable<ResponseDashboardVisit>
+
+    @GET("get_table_frequent_visit")
+    fun get_table_frequent_visit(
+        @Query("database") database: String?,
+        @Query("desa_ID") desa_ID: String?
+    ): Observable<ResponseFrequent>
 }

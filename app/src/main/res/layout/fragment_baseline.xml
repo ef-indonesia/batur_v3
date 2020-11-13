@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimens_10"
                 android:layout_marginEnd="@dimen/dimens_10"
-                android:theme="@style/Theme.MaterialComponents.DayNight"
+                android:animateLayoutChanges="true"
                 app:cardCornerRadius="@dimen/dimens_15"
                 app:cardElevation="@dimen/dimens_5"
                 app:layout_constraintTop_toTopOf="parent"
@@ -193,7 +193,8 @@
                         android:src="@drawable/ic_baseline_dashboard"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -205,7 +206,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimens_10"
-                android:layout_marginTop="@dimen/dimens_10"
+                android:layout_marginTop="@dimen/dimens_5"
                 android:layout_marginEnd="@dimen/dimens_10"
                 android:enabled="false"
                 android:text="@string/lanjut"
@@ -213,128 +214,115 @@
                 app:cornerRadius="@dimen/dimens_5"
                 app:layout_constraintTop_toBottomOf="@id/cv_menu" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_5"
+                android:layout_marginStart="@dimen/dimens_10"
+                android:layout_marginTop="@dimen/dimens_5"
+                android:layout_marginEnd="@dimen/dimens_10"
+                android:background="@color/traceon_sky_blue"
+                app:layout_constraintTop_toBottomOf="@id/bt_submit_baseline" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_petani"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:padding="@dimen/dimens_10"
+            android:paddingStart="@dimen/dimens_10"
+            android:paddingEnd="@dimen/dimens_10"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_choice">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_village"
+            <TextView
+                android:id="@id/tv_petani"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="@dimen/dimens_10"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_marginStart="@dimen/dimens_10"
+                android:text="@string/petani"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_down"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_petani"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dimens_10"
+                app:cardCornerRadius="@dimen/dimens_15"
+                app:cardElevation="@dimen/dimens_5"
+                app:cardPreventCornerOverlap="true"
+                app:layout_constraintTop_toBottomOf="@id/tv_petani">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_village"
+                    android:id="@+id/cl_farmer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimens_10"
-                    android:layout_marginBottom="@dimen/dimens_10">
+                    android:paddingStart="@dimen/dimens_10"
+                    android:paddingEnd="@dimen/dimens_10"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/tv_village"
-                        android:layout_width="match_parent"
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pilih Desa"
+                        android:text="@string/nama_petani_dan_alamat"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/cb_all"
+                        app:layout_constraintStart_toEndOf="@+id/cb_all"
+                        app:layout_constraintTop_toTopOf="@id/cb_all" />
+
+                    <TextView
+                        android:id="@+id/tv_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gambar"
                         android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@id/sw_image"
+                        app:layout_constraintStart_toStartOf="@id/sw_image"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.skydoves.powerspinner.PowerSpinnerView
-                        android:id="@+id/sp_village"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cb_all"
+                        style="@style/Widget.App.CheckBox"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_spinner"
-                        android:enabled="false"
-                        android:gravity="center_vertical"
-                        android:hint="@string/desa"
-                        android:textColor="@android:color/white"
-                        android:textSize="10sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_village"
-                        app:spinner_arrow_animate="true"
-                        app:spinner_arrow_tint="@android:color/black"
-                        app:spinner_divider_color="@android:color/white"
-                        app:spinner_divider_show="true"
-                        app:spinner_divider_size="0.4dp"
-                        app:spinner_popup_animation="bounce"
-                        app:spinner_popup_background="@color/traseon_grey"
-                        app:spinner_popup_elevation="@dimen/dimens_10" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sw_image"
+                        style="@style/Widget.App.Switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_image" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_farmer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/cv_village">
-
-                <TextView
-                    android:id="@+id/tv_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/all"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="@id/cb_all"
-                    app:layout_constraintStart_toStartOf="@id/cb_all"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nama_petani_dan_alamat"
-                    android:textAlignment="center"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toStartOf="@id/tv_image"
-                    app:layout_constraintStart_toEndOf="@id/tv_all"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gambar"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="@id/sw_image"
-                    app:layout_constraintStart_toStartOf="@id/sw_image"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/cb_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_all" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/sw_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_image" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/light_transparent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/sl_baseline"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@id/cl_info"
-                app:layout_constraintTop_toBottomOf="@id/cl_farmer">
+                android:layout_marginTop="@dimen/dimens_10"
+                android:layout_marginBottom="@dimen/dimens_10"
+                app:layout_constraintBottom_toTopOf="@id/cv_info"
+                app:layout_constraintTop_toBottomOf="@id/cv_petani">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_baseline"
@@ -342,52 +330,96 @@
                     android:layout_height="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    tools:listitem="@layout/item_farmer_choice" />
+                    tools:listitem="@layout/item_farmer" />
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_info"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/dimens_10"
+                app:cardBackgroundColor="@color/traceon_sky_blue"
+                app:cardCornerRadius="@dimen/dimens_15"
+                app:cardElevation="@dimen/dimens_5"
                 app:layout_constraintBottom_toTopOf="@id/bt_synchronize">
 
-                <View
+                <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/light_transparent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_terpilih"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/total_terpilih"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginStart="@dimen/dimens_10"
+                    android:layout_marginEnd="@dimen/dimens_10"
+                    android:background="@android:color/transparent"
+                    android:padding="@dimen/dimens_10">
 
-                <TextView
-                    android:id="@+id/tv_total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_5"
-                    android:text="@string/total_semua"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_terpilih" />
+                    <TableRow android:background="@android:color/transparent">
 
-                <TextView
-                    android:id="@+id/tv_memory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/internal_memory"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_total"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                        <TextView
+                            android:layout_column="1"
+                            android:layout_weight="1"
+                            android:text="@string/total_semua"
+                            android:textSize="12sp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:layout_column="2"
+                            android:text="@string/titik_dua"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_total"
+                            android:layout_column="3"
+                            android:layout_marginStart="@dimen/dimens_20"
+                            android:layout_weight="1"
+                            android:textSize="12sp"
+                            tools:text="30 MB" />
+                    </TableRow>
+
+                    <TableRow android:background="@android:color/transparent">
+
+                        <TextView
+                            android:layout_column="1"
+                            android:layout_weight="1"
+                            android:text="@string/total_terpilih"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_column="2"
+                            android:text="@string/titik_dua"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_terpilih"
+                            android:layout_column="3"
+                            android:layout_marginStart="@dimen/dimens_20"
+                            android:layout_weight="1"
+                            android:textSize="12sp"
+                            tools:text="600 kb" />
+                    </TableRow>
+
+                    <TableRow android:background="@android:color/transparent">
+
+                        <TextView
+                            android:layout_column="1"
+                            android:layout_weight="1"
+                            android:text="@string/internal_memory"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_column="2"
+                            android:text="@string/titik_dua"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_memory"
+                            android:layout_column="3"
+                            android:layout_marginStart="@dimen/dimens_20"
+                            android:layout_weight="1"
+                            android:textSize="12sp"
+                            tools:text="64 Gb" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bt_synchronize"
@@ -395,7 +427,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_10"
-                android:text="Synchronize"
+                android:text="@string/synchronize"
                 android:textStyle="bold"
                 app:cornerRadius="@dimen/dimens_5"
                 app:layout_constraintBottom_toBottomOf="parent" />

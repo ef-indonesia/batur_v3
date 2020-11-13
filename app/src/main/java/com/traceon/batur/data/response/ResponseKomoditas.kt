@@ -1,5 +1,5 @@
 package com.traceon.batur.data.response
 
-import com.traceon.batur.data.model.KomoditasBaru
+import com.traceon.batur.data.model.TempKomoditas
 
-class ResponseKomoditas : ArrayList<KomoditasBaru>()
+class ResponseKomoditas : ArrayList<TempKomoditas>()

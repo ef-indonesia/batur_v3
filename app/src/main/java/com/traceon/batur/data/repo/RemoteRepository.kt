@@ -1,6 +1,5 @@
 package com.traceon.batur.data.repo
 
-import com.traceon.batur.data.model.Petani
 import com.traceon.batur.data.network.NetworkConfig
 import com.traceon.batur.data.response.*
 import io.reactivex.Observable
@@ -45,24 +44,36 @@ class RemoteRepository {
     }
 
     fun getPetani(
-        database: String,
-        desa_id: String,
-        petani_id: String
-    ): Call<List<Petani>> {
-        return api.get_petani(database, desa_id, petani_id)
+        database: String?,
+        desa_id: String?,
+        petani_id: String?
+    ): Observable<ResponsePetani> {
+        return api.get_petani_new(database, desa_id, petani_id)
+    }
+
+    fun getReferral(
+        database: String?, staff_id: String?
+    ): Observable<ResponseReferral> {
+        return api.get_kode_referal(database, staff_id)
     }
 
     fun getLahan(
-        database: String, petani_id: String, desa_id: String, kode: String
-    ): Call<List<ResponseLahan>> {
-        return api.get_lahan(database, petani_id, desa_id, kode)
+        database: String, petani_id: String
+    ): Observable<ResponseLahan> {
+        return api.get_lahan_new(database, petani_id)
     }
 
-    fun getJenisKomoditas(
+    fun getKomoditas(
         database: String?,
         sub_kategori_komoditas_id: String?
-    ): Call<List<ResponseJenisKomoditas>> {
+    ): Observable<ResponseKomoditas> {
         return api.get_komoditas(database, sub_kategori_komoditas_id)
+    }
+
+    fun getBaseline(
+        database: String?, petani_id: String?
+    ): Observable<ResponseBaseline> {
+        return api.get_baseline_in(database, petani_id)
     }
 
     fun getDeleteImage(database: String, file_path: String): Call<List<ResponseUpdate>> {
@@ -81,6 +92,14 @@ class RemoteRepository {
 
     fun getPrioritasVisit(database: String?, desa_id: String?): Observable<ResponsePrioritasVisit> {
         return api.get_prioritas_visit(database, desa_id)
+    }
+
+    fun getPrioritasVisitBaru(
+        database: String?,
+        desa_id: String?,
+        frequent: String?
+    ): Observable<ResponsePrioritasVisit> {
+        return api.get_prioritas_visit_new(database, desa_id, frequent)
     }
 
     fun getIncidentalVisit(database: String?, kode: String?): Observable<ResponseIncidentalVisit> {
@@ -115,7 +134,7 @@ class RemoteRepository {
         return api.get_check_point(database, check_area_id)
     }
 
-    fun getKomoditas(
+    fun getKomoditasVisit(
         database: String?,
         sub_kategori_komoditas_id: String?,
         id_sub_lahan: String?,
@@ -127,7 +146,7 @@ class RemoteRepository {
     fun getKomoditasBaru(
         database: String?,
         group_komoditas_id: String?
-    ): Observable<ResponseKomoditas> {
+    ): Observable<ResponseKomoditasBaru> {
         return api.get_komoditas_baru(database, group_komoditas_id)
     }
 
@@ -136,5 +155,12 @@ class RemoteRepository {
         desa_id: String?
     ): Observable<ResponseDashboardVisit> {
         return api.show_grafik_petani_program_visit(database, desa_id)
+    }
+
+    fun getFrequentVisit(
+        database: String?,
+        desa_id: String?
+    ): Observable<ResponseFrequent> {
+        return api.get_table_frequent_visit(database, desa_id)
     }
 }

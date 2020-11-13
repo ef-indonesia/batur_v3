@@ -1,118 +1,56 @@
 package com.traceon.batur.data.model
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "petanies")
-data class Petani(
-    @SerializedName("area")
-    @ColumnInfo(name = "area")
-    var area: String? = null,
-
-    @SerializedName("desa_ID")
-    @ColumnInfo(name = "desa_ID")
-    var desaID: String? = null,
-
-    @SerializedName("ukuran_total")
-    @ColumnInfo(name = "ukuran_total")
-    var ukuranTotal: Double? = null,
-
-    @SerializedName("kode_pos")
-    @ColumnInfo(name = "kode_pos")
-    var kodePos: String? = null,
-
-    @SerializedName("foto_petani")
-    @ColumnInfo(name = "foto_petani")
-    var fotoPetani: String? = null,
-
-    @SerializedName("created_at")
-    @ColumnInfo(name = "created_at")
-    var createdAt: String? = null,
-
-    @SerializedName("lahan_total")
-    @ColumnInfo(name = "lahan_total")
-    var lahanTotal: Int? = null,
-
-    @SerializedName("foto_ktp")
-    @ColumnInfo(name = "foto_ktp")
-    var fotoKtp: String? = "",
-
-    @SerializedName("ukuran_text")
-    @ColumnInfo(name = "ukuran_text")
-    var ukuranText: Double? = null,
-
-    @SerializedName("area_ID")
-    @ColumnInfo(name = "area_ID")
-    var areaID: String? = null,
-
-    @SerializedName("nomor")
-    @ColumnInfo(name = "nomor")
-    var nomor: String? = null,
-
-    @SerializedName("deleted_at")
-    @ColumnInfo(name = "deleted_at")
-    var deletedAt: String? = null,
-
-    @SerializedName("aktif")
-    @ColumnInfo(name = "aktif")
-    var aktif: String? = null,
-
-    @SerializedName("alamat")
-    @ColumnInfo(name = "alamat")
-    var alamat: String? = null,
-
-    @SerializedName("nama")
-    @ColumnInfo(name = "nama")
-    var nama: String? = null,
-
-    @SerializedName("manajemen_unit_ID")
-    @ColumnInfo(name = "manajemen_unit_ID")
-    var manajemenUnitID: String? = null,
-
-    @SerializedName("no_ktp")
-    @ColumnInfo(name = "no_ktp")
-    var noKtp: String? = null,
-
-    @SerializedName("kode")
-    @ColumnInfo(name = "kode")
-    var kode: String? = null,
-
-    @SerializedName("lahan_kunci")
-    @ColumnInfo(name = "lahan_kunci")
-    var lahanKunci: String? = null,
-
-    @SerializedName("manajemen_unit")
-    @ColumnInfo(name = "manajemen_unit")
-    var manajemenUnit: String? = null,
-
-    @SerializedName("no_telp")
-    @ColumnInfo(name = "no_telp")
-    var noTelp: String? = null,
-
-    @SerializedName("modified_at")
-    @ColumnInfo(name = "modified_at")
-    var modifiedAt: String? = null,
-
-    @SerializedName("email")
-    @ColumnInfo(name = "email")
-    var email: String? = null,
-
-    @SerializedName("uriFoto")
-    @ColumnInfo(name = "uriFoto")
-    var uriFoto: String? = "",
-
-    @SerializedName("status")
-    @ColumnInfo(name = "status")
-    var status: String? = null,
-
+open class Petani(
     @PrimaryKey
-    @SerializedName("ID")
-    @ColumnInfo(name = "ID")
-    var iD: Int? = null
-
-) : Parcelable
+    var ID: Int? = null,
+    var agama: String? = null,
+    var aktif: String? = null,
+    var alamat: String? = null,
+    var area: String? = null,
+    var area_ID: Int? = null,
+    var asal_usul_petani: String? = null,
+    var atas_nama: String? = null,
+    var bank_ID: String? = null,
+    var created_at: String? = null,
+    var deleted_at: String? = null,
+    var desa_ID: Int? = null,
+    var email: String? = null,
+    var foto_ktp: String? = null,
+    var foto_petani: String? = null,
+    var foto_tanda_tangan: String? = null,
+    var jenis_kelamin: String? = null,
+    var jumlah_anggota_keluarga: Int? = null,
+    var jumlah_pendapatan_tahunan: Int? = null,
+    var kelompok_tani: String? = null,
+    var kode: String? = null,
+    var kode_desa: String? = null,
+    var kode_pos: String? = null,
+    var kode_rahasia: String? = null,
+    var lahan_kunci: Int? = null,
+    var lahan_total: Int? = null,
+    var manajemen_unit: String? = null,
+    var manajemen_unit_ID: Int? = null,
+    var modified_at: String? = null,
+    var nama: String? = null,
+    var no_ktp: String? = null,
+    var no_rekening: String? = null,
+    var no_telp: String? = null,
+    var nomor: String? = null,
+    var pekerjaan_sampingan: String? = null,
+    var pekerjaan_utama: String? = null,
+    var pendidikan_non_formal: String? = null,
+    var pendidikan_terakhir: String? = null,
+    var posisi_dalam_kelompok_tani: String? = null,
+    var status: String? = null,
+    var suku: String? = null,
+    var tanggal_lahir: String? = null,
+    var tempat_lahir: String? = null,
+    var ukuran_text: Double? = null,
+    var ukuran_total: Double? = null
+) : RealmObject(), Parcelable

@@ -21,7 +21,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimens_5">
 
                 <View
                     android:id="@+id/view"
@@ -32,13 +33,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cv_menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
                     app:cardCornerRadius="@dimen/dimens_20"
                     app:cardElevation="@dimen/dimens_5"
+                    app:cardPreventCornerOverlap="true"
                     app:layout_constraintBottom_toBottomOf="@id/view"
                     app:layout_constraintTop_toTopOf="@+id/view">
 
@@ -70,10 +72,10 @@
                             android:id="@+id/tv_petani"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=": Slamet Subgyo"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@id/view_line_top"
-                            app:layout_constraintTop_toTopOf="@id/tv_petani_title" />
+                            app:layout_constraintTop_toTopOf="@id/tv_petani_title"
+                            tools:text=": Slamet Subgyo" />
 
                         <TextView
                             android:id="@+id/tv_no_lahan_title"
@@ -88,130 +90,77 @@
                             android:id="@+id/tv_no_lahan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=": L20AE002"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@id/tv_petani"
-                            app:layout_constraintTop_toBottomOf="@id/tv_petani" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_petani"
+                            tools:text=": L20AE002" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/tv_pilih_program"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_program"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimens_20"
-                    android:text="@string/pilih_program"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_menu" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_spinner_pilih_program"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:background="@drawable/bg_spinner"
-                    android:backgroundTint="@color/colorPrimary"
-                    app:layout_constraintTop_toBottomOf="@id/tv_pilih_program">
-
-                    <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
-                        android:id="@+id/sp_pilih_program"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimens_45"
-                        android:padding="@dimen/dimens_5"
-                        app:act_backColor="@color/colorPrimary"
-                        app:act_dropIconTint="@android:color/white"
-                        app:act_hasLabel="false"
-                        app:act_hint="@string/pilih_program"
-                        app:act_hintColor="@android:color/white"
-                        app:act_textColor="@android:color/white"
-                        app:act_tint="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <TextView
-                    android:id="@+id/tv_pilih_komoditas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_20"
-                    android:text="@string/pilih_komoditas_baseline"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/cl_spinner_pilih_program" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_spinner_pilih_komoditas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:background="@drawable/bg_spinner"
-                    android:backgroundTint="@color/colorPrimary"
-                    app:layout_constraintTop_toBottomOf="@id/tv_pilih_komoditas">
-
-                    <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
-                        android:id="@+id/sp_pilih_komoditas"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimens_45"
-                        android:padding="@dimen/dimens_5"
-                        app:act_backColor="@color/colorPrimary"
-                        app:act_dropIconTint="@android:color/white"
-                        app:act_hasLabel="false"
-                        app:act_hint="@string/pilih_komoditas"
-                        app:act_hintColor="@android:color/white"
-                        app:act_textColor="@android:color/white"
-                        app:act_tint="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <TextView
-                    android:id="@+id/tv_rubah_komoditas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:text="Perubahan Komiditas"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@id/cl_spinner_pilih_komoditas" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_rubah_komoditas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:padding="0dp"
                     app:cardCornerRadius="@dimen/dimens_20"
                     app:cardElevation="@dimen/dimens_5"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_rubah_komoditas">
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintTop_toBottomOf="@id/cv_menu">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom">
+                        android:padding="@dimen/dimens_10">
 
-                        <RadioGroup
-                            android:id="@+id/rg_rubah_komoditas"
+                        <TextView
+                            android:id="@+id/tv_program"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:text="@string/pilih_program"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_program"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:enabled="false"
+                            android:hint="@string/program"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toBottomOf="@id/tv_program" />
+
+                        <TextView
+                            android:id="@+id/tv_rubah_program"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/perubahan_program"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toBottomOf="@id/et_program" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_rubah_program"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
                             android:background="@android:color/transparent"
                             android:gravity="center"
                             android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toBottomOf="@id/tv_rubah_program">
 
                             <RadioButton
+                                android:id="@+id/rb_program_ya"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="@dimen/dimens_30"
                                 android:text="@string/ya" />
 
                             <RadioButton
+                                android:id="@+id/rb_program_tidak"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimens_30"
@@ -219,222 +168,355 @@
 
                         </RadioGroup>
 
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_program_baru"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_20"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/rg_rubah_program">
+
+                            <TextView
+                                android:id="@+id/tv_pilih_program"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/program_baru"
+                                android:textStyle="bold"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/cl_spinner_pilih_program"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10"
+                                android:background="@drawable/bg_spinner"
+                                android:backgroundTint="@color/colorPrimary"
+                                app:layout_constraintTop_toBottomOf="@id/tv_pilih_program">
+
+                                <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                                    android:id="@+id/sp_pilih_program"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimens_45"
+                                    android:padding="@dimen/dimens_5"
+                                    app:act_backColor="@color/colorPrimary"
+                                    app:act_dropIconTint="@android:color/white"
+                                    app:act_hasLabel="false"
+                                    app:act_hint="@string/pilih_program"
+                                    app:act_hintColor="@android:color/white"
+                                    app:act_textColor="@android:color/white"
+                                    app:act_tint="@color/colorPrimary"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/tv_pilih_komoditas_baru"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:text="@string/pilih_komoditas_baru"
-                    android:textStyle="bold"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/cv_rubah_komoditas" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_spinner_pilih_komoditas_baru"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:background="@drawable/bg_spinner"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/tv_pilih_komoditas_baru">
-
-                    <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
-                        android:id="@+id/sp_pilih_komoditas_baru"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimens_45"
-                        android:padding="@dimen/dimens_5"
-                        android:textColor="@android:color/white"
-                        app:act_backColor="@color/colorPrimary"
-                        app:act_dropIconTint="@android:color/white"
-                        app:act_hasLabel="false"
-                        app:act_hint="@string/pilih_komoditas"
-                        app:act_hintColor="@android:color/white"
-                        app:act_textColor="@android:color/white"
-                        app:act_tint="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <TextView
-                    android:id="@+id/tv_siklus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:text="@string/fase"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@id/cl_spinner_pilih_komoditas_baru" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_spinner_fase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:background="@drawable/bg_spinner_transparant"
-                    app:layout_constraintTop_toBottomOf="@id/tv_siklus">
-
-                    <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
-                        android:id="@+id/sp_fase"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimens_45"
-                        android:background="@android:color/transparent"
-                        android:padding="@dimen/dimens_5"
-                        android:textColor="@android:color/black"
-                        app:act_backColor="@color/white"
-                        app:act_dropIconTint="@android:color/black"
-                        app:act_hasLabel="false"
-                        app:act_hint="@string/pilih_fase"
-                        app:act_hintColor="@android:color/black"
-                        app:act_textColor="@android:color/white"
-                        app:act_tint="@color/white"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <TextView
-                    android:id="@+id/tv_cek_area"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_komoditas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimens_20"
-                    android:text="@string/cek_area"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/cl_spinner_fase" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_spinner_cek_area"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:background="@drawable/bg_spinner"
-                    android:backgroundTint="@color/colorPrimary"
-                    app:layout_constraintTop_toBottomOf="@id/tv_cek_area">
-
-                    <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
-                        android:id="@+id/sp_pilih_cek_area"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimens_45"
-                        android:padding="@dimen/dimens_5"
-                        android:textColor="@android:color/white"
-                        app:act_backColor="@color/colorPrimary"
-                        app:act_dropIconTint="@android:color/white"
-                        app:act_hasLabel="false"
-                        app:act_hint="@string/pilih_cek_area"
-                        app:act_hintColor="@android:color/white"
-                        app:act_textColor="@android:color/white"
-                        app:act_tint="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <TextView
-                    android:id="@+id/tv_monitoring"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:text="@string/checklist_monitoring"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@id/cl_spinner_cek_area" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_monitoring"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:padding="@dimen/dimens_10"
                     app:cardCornerRadius="@dimen/dimens_20"
                     app:cardElevation="@dimen/dimens_5"
-                    app:layout_constraintBottom_toTopOf="@id/tv_catatan"
-                    app:layout_constraintTop_toBottomOf="@id/tv_monitoring">
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintTop_toBottomOf="@id/cv_program">
 
-                    <LinearLayout
-                        android:id="@+id/ll_check_point"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dimens_10" />
+                        android:padding="@dimen/dimens_10">
 
-                </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_komoditas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/komoditas"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_catatan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_20"
-                    android:text="@string/catatan"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cv_monitoring" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_komoditas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:enabled="false"
+                            android:hint="@string/komoditas"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toBottomOf="@id/tv_komoditas" />
 
-                <EditText
-                    android:id="@+id/et_catatan"
+                        <TextView
+                            android:id="@+id/tv_rubah_komoditas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/perubahan_komoditas"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toBottomOf="@id/et_komoditas" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_rubah_komoditas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@id/tv_rubah_komoditas">
+
+                            <RadioButton
+                                android:id="@+id/rb_komoditas_ya"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_30"
+                                android:text="@string/ya" />
+
+                            <RadioButton
+                                android:id="@+id/rb_komoditas_tidak"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_30"
+                                android:text="@string/tidak" />
+
+                        </RadioGroup>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_komoditas_baru"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/rg_rubah_komoditas">
+
+                            <TextView
+                                android:id="@+id/tv_pilih_komoditas"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10"
+                                android:text="@string/komoditas_baru"
+                                android:textStyle="bold"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/cl_spinner_komoditas"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10"
+                                android:background="@drawable/bg_spinner"
+                                android:backgroundTint="@color/colorPrimary"
+                                app:layout_constraintTop_toBottomOf="@id/tv_pilih_komoditas">
+
+                                <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                                    android:id="@+id/sp_pilih_komoditas"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimens_45"
+                                    android:padding="@dimen/dimens_5"
+                                    app:act_backColor="@color/colorPrimary"
+                                    app:act_dropIconTint="@android:color/white"
+                                    app:act_hasLabel="false"
+                                    app:act_hint="@string/pilih_komoditas"
+                                    app:act_hintColor="@android:color/white"
+                                    app:act_textColor="@android:color/white"
+                                    app:act_tint="@color/colorPrimary"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_fase"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimens_70"
-                    android:layout_marginTop="@dimen/dimens_10"
-                    android:background="@drawable/bg_spinner"
-                    android:backgroundTint="@color/traceon_sky_blue"
-                    android:hint="@string/catatan_hint"
-                    android:paddingStart="@dimen/dimens_10"
-                    android:paddingEnd="@dimen/dimens_10"
-                    android:textSize="14sp"
-                    app:layout_constraintTop_toBottomOf="@id/tv_catatan" />
-
-                <TextView
-                    android:id="@+id/tv_photo"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimens_20"
-                    android:text="@string/photo"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_catatan" />
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/cv_komoditas">
 
-                <ImageView
-                    android:id="@+id/iv_ad_photo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add_a_photo"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_photo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_photo" />
+                    <TextView
+                        android:id="@+id/tv_fase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:text="@string/fase"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_visit_photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_20"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/tv_photo"
-                    app:spanCount="2"
-                    tools:listitem="@layout/item_visit_photo" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_spinner_fase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:background="@drawable/bg_spinner_transparant"
+                        app:layout_constraintTop_toBottomOf="@id/tv_fase">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/bt_visit_simpan"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_20"
-                    android:layout_marginBottom="@dimen/dimens_20"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:text="@string/simpan"
-                    android:textStyle="bold"
-                    app:cornerRadius="@dimen/dimens_15"
-                    app:layout_constraintTop_toBottomOf="@id/rv_visit_photo" />
+                        <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                            android:id="@+id/sp_fase"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimens_45"
+                            android:background="@android:color/transparent"
+                            android:padding="@dimen/dimens_5"
+                            android:textColor="@android:color/black"
+                            app:act_backColor="@color/white"
+                            app:act_dropIconTint="@android:color/black"
+                            app:act_hasLabel="false"
+                            app:act_hint="@string/pilih_fase"
+                            app:act_hintColor="@android:color/black"
+                            app:act_textColor="@android:color/white"
+                            app:act_tint="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tv_cek_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:text="@string/cek_area"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_spinner_fase" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_spinner_cek_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:background="@drawable/bg_spinner"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:layout_constraintTop_toBottomOf="@id/tv_cek_area">
+
+                        <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                            android:id="@+id/sp_pilih_cek_area"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimens_45"
+                            android:padding="@dimen/dimens_5"
+                            android:textColor="@android:color/white"
+                            app:act_backColor="@color/colorPrimary"
+                            app:act_dropIconTint="@android:color/white"
+                            app:act_hasLabel="false"
+                            app:act_hint="@string/pilih_cek_area"
+                            app:act_hintColor="@android:color/white"
+                            app:act_textColor="@android:color/white"
+                            app:act_tint="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tv_monitoring"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:text="@string/checklist_monitoring"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/cl_spinner_cek_area" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_monitoring"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:padding="@dimen/dimens_10"
+                        app:cardCornerRadius="@dimen/dimens_20"
+                        app:cardElevation="@dimen/dimens_5"
+                        app:layout_constraintBottom_toTopOf="@id/tv_catatan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_monitoring">
+
+                        <LinearLayout
+                            android:id="@+id/ll_check_point"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimens_10" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_catatan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:text="@string/catatan"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cv_monitoring" />
+
+                    <EditText
+                        android:id="@+id/et_catatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimens_70"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:background="@drawable/bg_spinner"
+                        android:backgroundTint="@color/traceon_sky_blue"
+                        android:hint="@string/catatan_hint"
+                        android:paddingStart="@dimen/dimens_10"
+                        android:paddingEnd="@dimen/dimens_10"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_catatan" />
+
+                    <TextView
+                        android:id="@+id/tv_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:text="@string/photo"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/et_catatan" />
+
+                    <ImageView
+                        android:id="@+id/iv_ad_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_add_a_photo"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_photo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_photo" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_visit_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@id/tv_photo"
+                        app:spanCount="2"
+                        tools:listitem="@layout/item_visit_photo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_visit_simpan"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:layout_marginBottom="@dimen/dimens_20"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="@string/simpan"
+                        android:textStyle="bold"
+                        app:cornerRadius="@dimen/dimens_15"
+                        app:layout_constraintTop_toBottomOf="@id/rv_visit_photo" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

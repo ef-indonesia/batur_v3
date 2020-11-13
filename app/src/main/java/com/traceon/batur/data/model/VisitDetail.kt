@@ -1,5 +1,9 @@
 package com.traceon.batur.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class VisitDetail(
     val baseline_data_ID: String,
     val desa: String,
@@ -10,4 +14,4 @@ data class VisitDetail(
     val lahan_ID: String,
     val petani: String,
     val petani_ID: String
-)
+) : Parcelable

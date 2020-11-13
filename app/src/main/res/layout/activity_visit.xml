@@ -11,208 +11,411 @@
 
         <include layout="@layout/toolbar" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_menu"
+        <ScrollView
+            android:id="@+id/sv_visit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimens_10"
-            android:layout_marginEnd="@dimen/dimens_10"
-            android:minHeight="140dp"
-            android:padding="0dp"
-            app:cardCornerRadius="@dimen/dimens_20"
-            app:cardElevation="@dimen/dimens_5"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:minHeight="140dp"
-                android:padding="@dimen/dimens_10">
+                android:layout_height="wrap_content">
 
-                <View
-                    android:id="@+id/view_cv"
-                    android:layout_width="1dp"
-                    android:layout_height="1dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_baseline_visit"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/view_cv"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="@id/view_cv"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/view_cv"
-                    app:layout_constraintTop_toTopOf="@id/view_cv">
-
-                    <TextView
-                        android:id="@+id/tv_mu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        tools:text="@string/management_unit" />
-
-                    <TextView
-                        android:id="@+id/tv_area"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimens_10"
-                        android:layout_marginBottom="@dimen/dimens_10"
-                        android:textStyle="bold"
-                        tools:text="@string/area" />
-
-                    <TextView
-                        android:id="@+id/tv_desa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        tools:text="@string/desa" />
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimens_10"
-            android:text="@string/prioritas_visit"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_menu" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_visit"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/dimens_10"
-            app:cardCornerRadius="@dimen/dimens_20"
-            app:cardElevation="@dimen/dimens_5"
-            app:layout_constraintBottom_toTopOf="@+id/cl_incidental_visit"
-            app:layout_constraintTop_toBottomOf="@id/tv_title">
-
-            <include
-                android:id="@+id/empty"
-                layout="@layout/content_empty"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/dimens_10"
-                android:visibility="gone" />
-
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/sl_visit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_visit"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_menu"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_visit" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimens_10"
+                    android:layout_marginEnd="@dimen/dimens_10"
+                    app:cardCornerRadius="@dimen/dimens_20"
+                    app:cardElevation="@dimen/dimens_5"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:padding="@dimen/dimens_10">
 
-        </com.google.android.material.card.MaterialCardView>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_mu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimens_10"
+                            android:enabled="false"
+                            android:hint="@string/management_unit"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/cl_spinner_program"
+                            app:layout_constraintEnd_toStartOf="@id/view_sparator"
+                            app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_incidental_visit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_area"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimens_10"
+                            android:enabled="false"
+                            android:hint="@string/area"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/cl_spinner_komoditas"
+                            app:layout_constraintEnd_toStartOf="@id/view_sparator"
+                            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_incidental_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimens_10"
-                android:text="Incidental Visit"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_desa"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimens_10"
+                            android:enabled="false"
+                            android:hint="@string/desa"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/cl_spinner_fase"
+                            app:layout_constraintEnd_toStartOf="@id/view_sparator"
+                            app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimens_10"
-                android:padding="@dimen/dimens_10"
-                app:cardCornerRadius="@dimen/dimens_20"
-                app:cardElevation="@dimen/dimens_5"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_incidental_title">
+                        <View
+                            android:id="@+id/view_sparator"
+                            android:layout_width="1dp"
+                            android:layout_height="1dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_spinner_program"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dimens_40"
+                            android:background="@drawable/bg_spinner"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/view_sparator"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                                android:id="@+id/sp_program"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@android:color/transparent"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"
+                                app:hintText="@string/pilih_program"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_program"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/pilih_program"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="@id/sp_program"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_spinner_komoditas"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dimens_40"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_spinner"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/view_sparator"
+                            app:layout_constraintTop_toBottomOf="@id/cl_spinner_program">
+
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                                android:id="@+id/sp_komoditas"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@android:color/transparent"
+                                android:enabled="false"
+                                android:gravity="center_vertical"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"
+                                app:hintText="@string/pilih_komoditas"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_komoditas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/pilih_komoditas"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="@id/sp_komoditas"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_spinner_fase"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dimens_40"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_spinner"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/view_sparator"
+                            app:layout_constraintTop_toBottomOf="@id/cl_spinner_komoditas">
+
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                                android:id="@+id/sp_fase"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@android:color/transparent"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"
+                                app:hintText="@string/pilih_fase"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_fase"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/pilih_fase"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_fase"
+                                app:layout_constraintStart_toStartOf="@id/sp_fase"
+                                app:layout_constraintTop_toTopOf="@id/sp_fase" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_fase"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/sp_fase" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_program"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/dimens_10">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimens_10"
+                    android:layout_marginTop="@dimen/dimens_10"
+                    android:layout_marginEnd="@dimen/dimens_10"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/cv_menu">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_search"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/dimens_10"
-                        android:hint="@string/masukkan_kode_lahan"
-                        android:inputType="textCapCharacters"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/bt_search"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bt_search"
-                        style="@style/Widget.MaterialComponents.Button"
+                    <TextView
+                        android:id="@+id/tv_frekuensi"
                         android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_marginEnd="@dimen/dimens_10"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:text="@string/cari"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimens_10"
+                        android:text="@string/frekuensi"
                         android:textStyle="bold"
-                        app:cornerRadius="@dimen/dimens_5"
-                        app:layout_constraintBottom_toBottomOf="@id/rl_qr"
-                        app:layout_constraintEnd_toStartOf="@id/rl_qr"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.traceon.batur.ui.base.SquareLayout
-                        android:id="@+id/rl_qr"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_round_transparant"
-                        android:padding="@dimen/dimens_5"
-                        app:layout_constraintBottom_toBottomOf="@id/et_search"
+                    <TextView
+                        android:id="@+id/tv_tgl_frekuensi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/et_search">
+                        app:layout_constraintTop_toTopOf="@id/tv_frekuensi"
+                        tools:text="Tanggal visit" />
 
-                        <ImageView
-                            android:id="@+id/iv_incidental_qr"
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/sl_frekuensi"
+                        android:layout_width="match_parent"
+                        android:layout_height="340dp"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        app:layout_constraintTop_toBottomOf="@id/tv_frekuensi">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_frekuensi"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_centerInParent="true"
-                            android:src="@drawable/ic_qr_code" />
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_frekuensi" />
 
-                    </com.traceon.batur.ui.base.SquareLayout>
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_visit"
+                    android:layout_width="match_parent"
+                    android:layout_height="920dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_program">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimens_10"
+                        android:text="@string/prioritas_visit"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cv_visit"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/dimens_10"
+                        app:cardCornerRadius="@dimen/dimens_20"
+                        app:cardElevation="@dimen/dimens_5"
+                        app:layout_constraintBottom_toTopOf="@+id/cl_incidental_visit"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+                        <include
+                            android:id="@+id/empty"
+                            layout="@layout/content_empty"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/dimens_10"
+                            android:visibility="gone" />
+
+                        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                            android:id="@+id/sl_visit"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_visit"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/item_visit" />
+
+                        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_incidental_visit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_incidental_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimens_10"
+                            android:text="@string/incidental_visit"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimens_10"
+                            android:padding="@dimen/dimens_10"
+                            app:cardCornerRadius="@dimen/dimens_20"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_incidental_title">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="@dimen/dimens_10">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_search"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/dimens_10"
+                                    android:hint="@string/masukkan_kode_lahan"
+                                    android:inputType="textCapCharacters"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@id/bt_search"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/bt_search"
+                                    style="@style/Widget.MaterialComponents.Button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:layout_marginEnd="@dimen/dimens_10"
+                                    android:backgroundTint="@color/colorPrimary"
+                                    android:text="@string/cari"
+                                    android:textStyle="bold"
+                                    app:cornerRadius="@dimen/dimens_5"
+                                    app:layout_constraintBottom_toBottomOf="@id/rl_qr"
+                                    app:layout_constraintEnd_toStartOf="@id/rl_qr"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <com.traceon.batur.ui.base.SquareLayout
+                                    android:id="@+id/rl_qr"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/bg_round_transparant"
+                                    android:padding="@dimen/dimens_5"
+                                    app:layout_constraintBottom_toBottomOf="@id/et_search"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="@id/et_search">
+
+                                    <ImageView
+                                        android:id="@+id/iv_incidental_qr"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_qr_code" />
+
+                                </com.traceon.batur.ui.base.SquareLayout>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

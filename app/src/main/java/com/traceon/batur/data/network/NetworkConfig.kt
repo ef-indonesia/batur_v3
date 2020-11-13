@@ -20,9 +20,9 @@ object NetworkConfig {
         )
         val okHttpClient = OkHttpClient.Builder()
             .addNetworkInterceptor(logger)
-            .writeTimeout(5, TimeUnit.SECONDS)
-            .readTimeout(5, TimeUnit.SECONDS)
-            .connectTimeout(5, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .build()
 

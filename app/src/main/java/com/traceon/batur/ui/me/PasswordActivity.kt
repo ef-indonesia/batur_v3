@@ -55,7 +55,7 @@ class PasswordActivity : BaseActivity<ActivityChangePasswordBinding, ProfileView
                         getDataBinding().etRePassword.error = null
                         getDataBinding().btPasswordSimpan.isEnabled = true
                     } else {
-                        getDataBinding().etRePassword.error = "Password tidak sama"
+                        getDataBinding().etRePassword.error = getString(R.string.password_tidak_sama)
                         getDataBinding().btPasswordSimpan.isEnabled = false
                     }
                 }
@@ -71,7 +71,14 @@ class PasswordActivity : BaseActivity<ActivityChangePasswordBinding, ProfileView
             onChangePassword()
         }
 
-        supportActionBar?.title = "Ganti Password"
+        supportActionBar?.setHomeAsUpIndicator(
+            Helper.setToolbarIconColor(
+                this,
+                R.drawable.ic_arrow_back
+            )
+        )
+
+        supportActionBar?.title = getString(R.string.ganti_password)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -146,7 +153,7 @@ class PasswordActivity : BaseActivity<ActivityChangePasswordBinding, ProfileView
                 this,
                 SweetAlertDialog.ERROR_TYPE
             )
-                .setTitleText("Error")
+                .setTitleText(getString(R.string.error))
                 .setContentText("Field tidak lengkap")
                 .show()
         }

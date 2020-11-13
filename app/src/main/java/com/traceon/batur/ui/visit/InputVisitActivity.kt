@@ -9,11 +9,9 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
-import awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
 import awesome.vrund.vpawesomewidgets.VPBaseAdapter
 import awesome.vrund.vpawesomewidgets.VPSpinner
 import cn.pedant.SweetAlert.SweetAlertDialog
@@ -22,20 +20,19 @@ import com.ethanhua.skeleton.SkeletonScreen
 import com.traceon.batur.R
 import com.traceon.batur.data.adapter.PhotoAdapter
 import com.traceon.batur.data.model.CheckPoint
+import com.traceon.batur.data.model.VisitDetail
 import com.traceon.batur.data.repo.RemoteRepository
-import com.traceon.batur.data.response.ResponseJenisKomoditas
+import com.traceon.batur.data.response.ResponseKomoditasVisit
 import com.traceon.batur.data.response.ResponseLogin
 import com.traceon.batur.databinding.ActivityInputVisitBinding
 import com.traceon.batur.ui.base.BaseActivity
+import com.traceon.batur.utils.AppConstant
 import com.traceon.batur.utils.Helper
 import com.traceon.batur.utils.SoftInputAssist
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.toolbar.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 @AndroidEntryPoint
 class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewModel>() {
@@ -47,6 +44,11 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
     private var listPhoto: ArrayList<Uri> = ArrayList()
     private lateinit var skeletonScreen: SkeletonScreen
     private lateinit var softInputAssist: SoftInputAssist
+    private var visitDetail: VisitDetail? = null
+    private var idProgram: String? = null
+    private var idKomoditas: String? = null
+    private var program: String? = null
+    private var komoditas: String? = null
 
     override fun getViewModelBindingVariable(): Int = NO_VIEW_MODEL_BINDING_VARIABLE
 
@@ -74,6 +76,18 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
             .duration(1000)
             .show()
 
+        visitDetail = intent?.getParcelableExtra(AppConstant.DATA)
+        idKomoditas = intent?.getStringExtra(AppConstant.ID_KOMODITAS)
+        idProgram = intent?.getStringExtra(AppConstant.ID_PROGRAM)
+        program = intent?.getStringExtra(AppConstant.PROGRAM)
+        komoditas = intent?.getStringExtra(AppConstant.KOMODITAS)
+
+        getDataBinding().tvPetani.text = visitDetail?.petani
+        getDataBinding().tvNoLahan.text = visitDetail?.kode_lahan
+        getDataBinding().etProgram.setText(program)
+        getDataBinding().etKomoditas.setText(komoditas)
+
+
         try {
             loadData()
         } catch (e: Exception) {
@@ -83,33 +97,50 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
             finish()
         }
 
+        getDataBinding().rgRubahProgram.setOnCheckedChangeListener { _, i ->
+            when (i) {
+                R.id.rb_program_ya -> {
+                    getDataBinding().clProgramBaru.visibility = View.VISIBLE
+                }
+                R.id.rb_program_tidak -> {
+                    getDataBinding().clProgramBaru.visibility = View.GONE
+                }
+
+            }
+        }
+
+        getDataBinding().rgRubahKomoditas.setOnCheckedChangeListener { _, i ->
+            when (i) {
+                R.id.rb_komoditas_ya -> {
+                    getDataBinding().clKomoditasBaru.visibility = View.VISIBLE
+                }
+                R.id.rb_komoditas_tidak -> {
+                    getDataBinding().clKomoditasBaru.visibility = View.GONE
+                    getDataBinding().clFase.visibility = View.VISIBLE
+                }
+            }
+        }
+
         supportActionBar?.title = getString(R.string.input_visit)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    @SuppressLint("CheckResult")
     private fun loadData() {
-        repo.getJenisKomoditas(responseLogin?.database.toString(), null)
-            .enqueue(object : Callback<List<ResponseJenisKomoditas>> {
-                override fun onResponse(
-                    call: Call<List<ResponseJenisKomoditas>>,
-                    response: Response<List<ResponseJenisKomoditas>>
-                ) {
-                    response.let { res ->
-                        if (res.isSuccessful) {
-                            setKomoditas(res.body())
-                        } else {
-                            SweetAlertDialog(this@InputVisitActivity, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(getString(R.string.error))
-                                .setContentText("Gagal ambil komofitas")
-                                .show()
-                        }
-                    }
+        repo.getKomoditasVisit(responseLogin?.database.toString(), null, null, null)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { response ->
+                    setKomoditas(response)
+                },
+                { t ->
+                    SweetAlertDialog(this@InputVisitActivity, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText(getString(R.string.error))
+                        .setContentText(t.message)
+                        .show()
                 }
-
-                override fun onFailure(call: Call<List<ResponseJenisKomoditas>>, t: Throwable) {
-                    t.printStackTrace()
-                }
-            })
+            )
         getChecklist()
     }
 
@@ -153,7 +184,8 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
 
             val adapter = VPBaseAdapter(this, question)
             val vpQuetion = VPSpinner(ll.context)
-            vpQuetion.background = ResourcesCompat.getDrawable(resources, R.drawable.bg_spinner, resources.newTheme())
+            vpQuetion.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.bg_spinner, resources.newTheme())
             vpQuetion.layoutParams = LinearLayout.LayoutParams(
                 0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f
             )
@@ -163,12 +195,20 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
             vpQuetion.showLabel(false)
 
             val indikator = View(ll.context)
-            indikator.layoutParams = LinearLayout.LayoutParams(
+            val layoutIndikator = LinearLayout.LayoutParams(
                 50, 50, 1f
             )
+
+            layoutIndikator.setMargins(5, 5, 5, 5)
+            indikator.layoutParams = layoutIndikator
             indikator.background =
-                ResourcesCompat.getDrawable(resources, R.drawable.bg_round, resources.newTheme())
-            indikator.setBackgroundColor(Color.BLUE)
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.bg_round_full,
+                    resources.newTheme()
+                )
+
+            indikator.background.setTint(Color.BLUE)
             indikator.setPadding(5, 5, 5, 5)
 
             ll.addView(vpQuetion)
@@ -180,7 +220,7 @@ class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewMode
 
     }
 
-    private fun setKomoditas(listKomoditas: List<ResponseJenisKomoditas>?) {
+    private fun setKomoditas(listKomoditas: ResponseKomoditasVisit?) {
         val komoditas: ArrayList<String> = ArrayList()
         val adapterKomoditas = VPBaseAdapter(this, komoditas)
         listKomoditas?.forEach { kom ->

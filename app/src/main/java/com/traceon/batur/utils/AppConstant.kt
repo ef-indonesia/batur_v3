@@ -1,6 +1,13 @@
 package com.traceon.batur.utils
 
 object AppConstant {
+    const val DB_LAHAN = "lahans"
+    const val DB_PETANI = "petanis"
+    const val DB_KOMODITAS = "komoditases"
+    const val DB_BASELINE = "baselines"
+    const val DB_REFERRAL = "referrals"
+    const val DB_SATUAN = "satuans"
+
     const val NAME = "name"
     const val EMAIL = "email"
     const val PHONE = "phone"
@@ -22,4 +29,8 @@ object AppConstant {
     const val DATA = "data"
     const val AREA = "area"
     const val MU = "mu"
+    const val PROGRAM = "program"
+    const val KOMODITAS = "komoditas"
+    const val ID_PROGRAM = "id_program"
+    const val ID_KOMODITAS = "id_komoditas"
 }

@@ -4,26 +4,28 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="Home"
+        android:title="@string/home"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/nav_baseline"
         android:icon="@drawable/ic_baseline"
-        android:title="Baseline"
+        android:title="@string/baseline"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/nav_visit"
         android:icon="@drawable/ic_visit"
-        android:title="Visit"
+        android:title="@string/visit"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/nav_tracking"
         android:icon="@drawable/ic_tracking"
-        android:title="Tracking"
+        android:title="@string/tracking"
+        android:visible="false"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/nav_monitoring"
         android:icon="@drawable/ic_monitoring"
-        android:title="Monitoring"
+        android:title="@string/monitoring"
+        android:visible="false"
         app:showAsAction="ifRoom" />
 </menu>

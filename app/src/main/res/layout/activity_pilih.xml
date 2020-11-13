@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_petani"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/background" />
+
+        <include layout="@layout/toolbar" />
+
+        <TextView
+            android:id="@+id/tv_judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            tools:text="Desa Wonoharjo" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_petani"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginTop="@dimen/dimens_5"
+            android:layout_marginEnd="@dimen/dimens_10"
+            app:cardCornerRadius="@dimen/dimens_15"
+            app:cardElevation="@dimen/dimens_5"
+            app:cardPreventCornerOverlap="true"
+            app:layout_constraintTop_toBottomOf="@+id/tv_judul">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_farmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/dimens_10"
+                android:paddingTop="@dimen/dimens_5"
+                android:paddingEnd="@dimen/dimens_10"
+                android:paddingBottom="@dimen/dimens_5"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nama_petani_dan_alamat"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/cb_all"
+                    app:layout_constraintStart_toEndOf="@+id/cb_all"
+                    app:layout_constraintTop_toTopOf="@id/cb_all" />
+
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cb_all"
+                    style="@style/Widget.App.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/sw_image"
+                    style="@style/Widget.App.Switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/sl_baseline"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginTop="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            app:layout_constraintBottom_toTopOf="@id/cv_info"
+            app:layout_constraintTop_toBottomOf="@id/cv_petani">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_baseline"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:listitem="@layout/item_farmer" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            app:cardBackgroundColor="@color/traceon_sky_blue"
+            app:cardCornerRadius="@dimen/dimens_15"
+            app:cardElevation="@dimen/dimens_5"
+            app:layout_constraintBottom_toTopOf="@id/bt_synchronize">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimens_10"
+                android:layout_marginEnd="@dimen/dimens_10"
+                android:layout_marginBottom="@dimen/dimens_5"
+                android:background="@android:color/transparent"
+                android:padding="@dimen/dimens_10">
+
+                <TableRow android:background="@android:color/transparent">
+
+                    <TextView
+                        android:id="@+id/tv_data_desa"
+                        android:layout_column="1"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        tools:text="@string/total_semua" />
+
+                    <TextView
+                        android:layout_column="2"
+                        android:text="@string/titik_dua"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_total"
+                        android:layout_column="3"
+                        android:layout_marginStart="@dimen/dimens_20"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@string/nol"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow android:background="@android:color/transparent">
+
+                    <TextView
+                        android:layout_column="1"
+                        android:layout_weight="1"
+                        android:text="@string/total_terpilih"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_column="2"
+                        android:text="@string/titik_dua"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_terpilih"
+                        android:layout_column="3"
+                        android:layout_marginStart="@dimen/dimens_20"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@string/nol"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow android:background="@android:color/transparent">
+
+                    <TextView
+                        android:layout_column="1"
+                        android:layout_weight="1"
+                        android:text="@string/internal_memory"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_column="2"
+                        android:text="@string/titik_dua"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_memory"
+                        android:layout_column="3"
+                        android:layout_marginStart="@dimen/dimens_20"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@string/nol"
+                        android:textSize="12sp" />
+                </TableRow>
+
+            </TableLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_synchronize"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:backgroundTint="@color/colorPrimary"
+            android:enabled="false"
+            android:text="@string/download"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/dimens_15"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <include
+            layout="@layout/content_empty"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sl_baseline" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

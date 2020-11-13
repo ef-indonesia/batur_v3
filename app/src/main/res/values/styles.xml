@@ -38,4 +38,12 @@
         <item name="colorAccent">@android:color/holo_blue_light</item>
     </style>
 
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="buttonTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="Widget.App.Switch" parent="Material.Widget.Switch">
+        <item name="buttonTint">@color/colorPrimary</item>
+    </style>
+
 </resources>

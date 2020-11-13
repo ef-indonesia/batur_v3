@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimens_5"
+    app:cardCornerRadius="@dimen/dimens_10"
+    app:cardElevation="@dimen/dimens_5"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimens_5">
+
+        <RelativeLayout
+            android:id="@+id/rl_frequent"
+            android:layout_width="@dimen/dimens_40"
+            android:layout_height="@dimen/dimens_40"
+            android:layout_marginStart="@dimen/dimens_20"
+            android:background="@drawable/bg_round_full"
+            android:backgroundTint="@color/light_transparent"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/tv_jml_frequent"
+            android:layout_width="@dimen/nav_header_height"
+            android:layout_height="@dimen/dimens_30"
+            android:layout_marginStart="@dimen/dimens_20"
+            android:background="@color/light_transparent"
+            app:layout_constraintBottom_toBottomOf="@id/rl_frequent"
+            app:layout_constraintStart_toEndOf="@+id/rl_frequent"
+            app:layout_constraintTop_toTopOf="@id/rl_frequent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

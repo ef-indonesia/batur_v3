@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimens_10">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:animateLayoutChanges="true"
+            android:padding="@dimen/dimens_10"
+            app:cardCornerRadius="@dimen/dimens_15"
+            app:cardElevation="@dimen/dimens_5"
+            app:cardPreventCornerOverlap="true"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_ktp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ktp"
+                    app:boxCornerRadiusBottomEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusBottomStart="@dimen/dimens_5"
+                    app:boxCornerRadiusTopEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusTopStart="@dimen/dimens_5"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789"
+                        android:inputType="phone" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_nama"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10"
+                    android:hint="@string/nama"
+                    app:boxCornerRadiusBottomEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusBottomStart="@dimen/dimens_5"
+                    app:boxCornerRadiusTopEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusTopStart="@dimen/dimens_5"
+                    app:layout_constraintTop_toBottomOf="@id/tl_ktp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_alamat"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10"
+                    android:hint="@string/alamat"
+                    app:boxCornerRadiusBottomEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusBottomStart="@dimen/dimens_5"
+                    app:boxCornerRadiusTopEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusTopStart="@dimen/dimens_5"
+                    app:layout_constraintTop_toBottomOf="@id/tl_nama">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_alamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_tmp_lahir"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10"
+                    android:hint="@string/tempat_lahir"
+                    app:boxCornerRadiusBottomEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusBottomStart="@dimen/dimens_5"
+                    app:boxCornerRadiusTopEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusTopStart="@dimen/dimens_5"
+                    app:layout_constraintTop_toBottomOf="@id/tl_alamat">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_tmp_lahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_tgl_lahir"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10"
+                    android:hint="@string/tanggal_lahir"
+                    app:boxCornerRadiusBottomEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusBottomStart="@dimen/dimens_5"
+                    app:boxCornerRadiusTopEnd="@dimen/dimens_5"
+                    app:boxCornerRadiusTopStart="@dimen/dimens_5"
+                    app:layout_constraintTop_toBottomOf="@id/tl_tmp_lahir">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_tgl_lahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_jenis_kelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_20"
+                    app:cardCornerRadius="@dimen/dimens_20"
+                    app:cardElevation="@dimen/dimens_5"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintTop_toBottomOf="@id/tl_tgl_lahir">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dimens_10">
+
+                        <TextView
+                            android:id="@+id/tv_jenis_kelamin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/jenis_kelamin"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_jenis_kelamin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_jenis_kelamin">
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow>
+
+                                    <RadioButton
+                                        android:id="@+id/rb_laki_laki"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimens_20"
+                                        android:layout_weight="1"
+                                        android:text="@string/laki_laki" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_perempuan"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/perempuan" />
+                                </TableRow>
+
+                            </TableLayout>
+
+                        </RadioGroup>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_agama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_20"
+                    app:cardCornerRadius="@dimen/dimens_20"
+                    app:cardElevation="@dimen/dimens_5"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintTop_toBottomOf="@id/cv_jenis_kelamin">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dimens_10">
+
+                        <TextView
+                            android:id="@+id/tv_agama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/agama"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_agama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:background="@android:color/transparent"
+                            android:orientation="vertical"
+                            app:layout_constraintTop_toBottomOf="@id/tv_agama">
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow android:layout_weight="2">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_islam"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimens_20"
+                                        android:layout_weight="1"
+                                        android:text="@string/islam" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_hindu"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/hindu" />
+                                </TableRow>
+
+                            </TableLayout>
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow android:layout_weight="2">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_kristen"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimens_20"
+                                        android:layout_weight="1"
+                                        android:text="@string/kristen" />
+
+                                    <RadioButton
+                                        android:id="@+id/eb_budha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/budha" />
+                                </TableRow>
+                            </TableLayout>
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow android:layout_weight="2">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_katolik"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimens_20"
+                                        android:layout_weight="1"
+                                        android:text="@string/katolik" />
+
+                                    <RadioButton
+                                        android:id="@+id/eb_lainnya"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/lainnya" />
+                                </TableRow>
+                            </TableLayout>
+
+                        </RadioGroup>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_status_perkawinan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_20"
+                    app:cardCornerRadius="@dimen/dimens_20"
+                    app:cardElevation="@dimen/dimens_5"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintTop_toBottomOf="@id/cv_agama">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dimens_10">
+
+                        <TextView
+                            android:id="@+id/tv_status_perkawinan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/status_perkawinan"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_status_perkawinan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:background="@android:color/transparent"
+                            android:orientation="vertical"
+                            app:layout_constraintTop_toBottomOf="@id/tv_status_perkawinan">
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow android:layout_weight="2">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_kawin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimens_20"
+                                        android:layout_weight="1"
+                                        android:text="@string/kawin" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_belum_kawin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Belum Kawin" />
+                                </TableRow>
+
+                            </TableLayout>
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow android:layout_weight="2">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_cerai"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimens_20"
+                                        android:layout_weight="1"
+                                        android:text="Cerai" />
+
+                                    <RadioButton
+                                        android:id="@+id/eb_janda"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/budha" />
+                                </TableRow>
+                            </TableLayout>
+
+                        </RadioGroup>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

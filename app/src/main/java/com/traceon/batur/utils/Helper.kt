@@ -7,16 +7,23 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.os.StatFs
 import android.provider.Settings
+import android.text.format.Formatter
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
+import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
@@ -26,6 +33,7 @@ import com.traceon.batur.data.response.ResponseLogin
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import io.realm.RealmConfiguration
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -35,13 +43,21 @@ import java.net.Socket
 
 object Helper {
 
+    fun setRealmConfig(dbName: String?): RealmConfiguration {
+        return RealmConfiguration.Builder().name(dbName.toString()).schemaVersion(1)
+            .allowQueriesOnUiThread(true)
+            .allowWritesOnUiThread(true)
+            .deleteRealmIfMigrationNeeded()
+            .build()
+    }
+
     //**********************************************************************************************
     fun getBool(key: String, context: Context): Boolean {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         return preferences.getBoolean(key, false)
     }
 
-    fun saveBool(key: String, value: Boolean?, context: Context) {
+    fun saveBool(key: String, value: Boolean?, context: Context?) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val editor = preferences.edit()
         editor.putBoolean(key, value!!)
@@ -97,6 +113,16 @@ object Helper {
         }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun setToolbarIconColor(context: Context, icon: Int): Drawable {
+        var drawable =
+            ResourcesCompat.getDrawable(context.resources, icon, null)
+        drawable = DrawableCompat.wrap(drawable!!)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            DrawableCompat.setTint(drawable, context.getColor(R.color.colorPrimary))
+        }
+        return drawable
     }
 
     fun getSesiLogin(context: Context): ResponseLogin {
@@ -173,6 +199,13 @@ object Helper {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
+    }
+
+    fun pesanBox(context: Context, title: String, message: String) {
+        SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+            .setTitleText(title)
+            .setContentText(message)
+            .show()
     }
 
     fun onFetchBaseline(context: Context, url: String, path: String) {
@@ -257,4 +290,27 @@ object Helper {
         }
         nm.notify(notifId, ncb.build())
     }
+
+    fun formatCapacity(byte: Double, digits: Int): String? {
+        var bytes = byte
+        val dictionary = arrayOf("bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
+        var index = 0
+        while (index < dictionary.size) {
+            if (bytes < 1024) {
+                break
+            }
+            bytes /= 1024
+            index++
+        }
+        return String.format("%." + digits + "f", bytes) + " " + dictionary[index]
+    }
+
+    fun spaceDisk(context: Context?): String {
+        val path = Environment.getDataDirectory()
+        val stat = StatFs(path.path)
+        val blockSize = stat.blockSizeLong
+        val availableBlocks = stat.availableBlocksLong
+        return Formatter.formatFileSize(context, availableBlocks * blockSize)
+    }
+
 }

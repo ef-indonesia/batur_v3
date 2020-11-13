@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_choice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimens_10"
+                android:layout_marginEnd="@dimen/dimens_10"
+                android:theme="@style/Theme.MaterialComponents.DayNight"
+                app:cardCornerRadius="@dimen/dimens_15"
+                app:cardElevation="@dimen/dimens_5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:paddingStart="@dimen/dimens_5"
+                    android:paddingTop="@dimen/dimens_5"
+                    android:paddingEnd="@dimen/dimens_5"
+                    android:paddingBottom="@dimen/dimens_5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dimens_5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/iv_simbol"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_spinner_program"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimens_40"
+                            android:background="@drawable/bg_spinner"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                                android:id="@+id/sp_program"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@android:color/transparent"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"
+                                app:hintText="@string/pilih_program"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_program"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/pilih_program"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="@id/sp_program"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_spinner_komoditas"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimens_40"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_spinner"
+                            app:layout_constraintTop_toBottomOf="@id/cl_spinner_program">
+
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                                android:id="@+id/sp_komoditas"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@android:color/transparent"
+                                android:enabled="false"
+                                android:gravity="center_vertical"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"
+                                app:hintText="@string/pilih_komoditas"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_komoditas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/pilih_komoditas"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="@id/sp_komoditas"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_spinner_fase"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimens_40"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_spinner"
+                            app:layout_constraintTop_toBottomOf="@id/cl_spinner_komoditas">
+
+                            <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                                android:id="@+id/sp_fase"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@android:color/transparent"
+                                android:spinnerMode="dialog"
+                                android:textSize="12sp"
+                                app:hintText="@string/pilih_fase"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_fase"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_5"
+                                android:background="@null"
+                                android:hint="@string/pilih_fase"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_fase"
+                                app:layout_constraintStart_toStartOf="@id/sp_fase"
+                                app:layout_constraintTop_toTopOf="@id/sp_fase" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dimens_5"
+                                android:src="@drawable/ic_arrow_down"
+                                app:layout_constraintBottom_toBottomOf="@id/sp_fase"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/sp_fase" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/view_cv"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/dimens_70"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_simbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_dashboard"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_visit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dimens_10"
+            android:paddingEnd="@dimen/dimens_10"
+            app:layout_constraintTop_toBottomOf="@id/cl_choice">
+
+            <TextView
+                android:id="@+id/tv_tanggal_visit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/bt_refresh"
+                app:layout_constraintEnd_toStartOf="@id/bt_refresh"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bt_refresh"
+                tools:text="Data visit per tanggal : 07-11-2020" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_refresh"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/refresh"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/dimens_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/bt_refresh">
+
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/frekuensi" />
+
+                    <TextView
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/nol" />
+
+                    <TextView
+                        android:layout_column="3"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/satu" />
+
+                    <TextView
+                        android:layout_column="4"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/dua" />
+
+                    <TextView
+                        android:layout_column="5"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/tiga" />
+
+                    <TextView
+                        android:layout_column="6"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/empat" />
+
+                    <TextView
+                        android:layout_column="7"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/lima" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/jumlah_petani_visit" />
+
+                    <TextView
+                        android:id="@+id/tv_jml_freq_0"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/nol" />
+
+                    <TextView
+                        android:id="@+id/tv_jml_freq_1"
+                        android:layout_column="3"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/nol" />
+
+                    <TextView
+                        android:id="@+id/tv_jml_freq_2"
+                        android:layout_column="4"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/nol" />
+
+                    <TextView
+                        android:id="@+id/tv_jml_freq_3"
+                        android:layout_column="5"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/nol" />
+
+                    <TextView
+                        android:id="@+id/tv_jml_freq_4"
+                        android:layout_column="6"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/nol" />
+
+                    <TextView
+                        android:id="@+id/tv_jml_freq_5"
+                        android:layout_column="7"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="@dimen/dimens_5"
+                        android:text="@string/nol" />
+                </TableRow>
+
+            </TableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

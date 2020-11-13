@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/background" />
+
+        <include layout="@layout/toolbar" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_petani"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginTop="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:background="@drawable/bg_round"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            app:queryHint="Cari" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginTop="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:text="@string/petani"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/cl_background" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/sl_petani"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginTop="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:layout_marginBottom="@dimen/dimens_10"
+            app:layout_constraintBottom_toTopOf="@id/cv_info"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_petani"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_petani" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:padding="@dimen/dimens_10"
+            app:cardBackgroundColor="@color/traceon_sky_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/fab_petani"
+            app:layout_constraintEnd_toStartOf="@id/fab_petani"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="@dimen/dimens_10">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="@string/jumlah_farmer" />
+
+                    <TextView android:text="@string/titik_dua" />
+
+                    <TextView
+                        android:id="@+id/tv_jml_petani"
+                        android:layout_marginStart="@dimen/dimens_10"
+                        android:layout_weight="1"
+                        tools:text="10" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="@string/belum_terdata" />
+
+                    <TextView android:text="@string/titik_dua" />
+
+                    <TextView
+                        android:id="@+id/tv_belum_terdata"
+                        android:layout_marginStart="@dimen/dimens_10"
+                        android:layout_weight="1"
+                        tools:text="10" />
+                </TableRow>
+
+            </TableLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_petani"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:layout_marginBottom="@dimen/dimens_10"
+            android:src="@drawable/ic_add"
+            android:tint="@android:color/white"
+            app:backgroundTint="@color/traceon_hijau"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

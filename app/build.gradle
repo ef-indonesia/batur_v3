@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'realm-android'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 30
@@ -27,6 +29,11 @@ android {
             shrinkResources true
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "Batur New-V${variant.versionName}.apk"
+                }
+            }
         }
     }
 
@@ -53,13 +60,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
     //navigation drawer
     implementation "androidx.navigation:navigation-fragment-ktx:$drawer"
     implementation "androidx.navigation:navigation-ui-ktx:$drawer"
-    implementation "androidx.navigation:navigation-fragment-ktx:$drawer"
-    implementation "androidx.navigation:navigation-ui-ktx:$drawer"
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
@@ -69,19 +75,15 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation 'com.google.android.material:material:1.2.1'
-    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
-    implementation "de.hdodenhof:circleimageview:3.0.0"
+    implementation 'com.github.f0ris.sweetalert:library:1.6.2'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //retrofit
-    implementation 'com.github.jamesdeperio:RetrofitKit:v1.0.5'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-simplexml:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    implementation "com.burgstaller:okhttp-digest:2.3"
-    implementation 'me.jessyan:retrofit-url-manager:1.4.0'
+    implementation "com.squareup.okhttp3:okhttp:4.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
 
     //RxJava 2
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
@@ -98,15 +100,15 @@ dependencies {
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_android_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_android_version"
 
-    //room db
-    implementation "android.arch.persistence.room:runtime:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:26.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    implementation "android.arch.paging:runtime:1.0.1"
-
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
-
+    //realm
+    kapt 'dk.ilios:realmfieldnameshelper:1.1.1'
     // WorkManager
     implementation "androidx.work:work-runtime-ktx:2.4.0"
 
@@ -123,7 +125,7 @@ dependencies {
 
     //anim
     implementation "com.github.thekhaeng:pushdown-anim-click:1.1.1"
-    implementation 'com.airbnb.android:lottie:3.4.0'
+    implementation 'com.airbnb.android:lottie:3.5.0'
     //skeleton placeholder
     implementation 'com.ethanhua:skeleton:1.1.2'
     implementation 'io.supercharge:shimmerlayout:2.1.0'
@@ -145,4 +147,12 @@ dependencies {
 
     //signature
     implementation 'com.github.gcacace:signature-pad:1.3.1'
+
+    //stepper
+    implementation 'com.github.TayfunCesur:Stepper:1.0.2'
+
+    //radiogroup
+    implementation 'com.github.Gavras:MultiLineRadioGroup:v1.0.0.6'
+
+    implementation project(':library-base');
 }

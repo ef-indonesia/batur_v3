@@ -1,20 +1,34 @@
 package com.traceon.batur.data.db
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
 import com.traceon.batur.data.model.*
+import com.traceon.batur.utils.AppConstant
+import com.traceon.batur.utils.Helper
+import com.vicpin.krealmextensions.RealmConfigStore
+import io.realm.Realm
 
-@Database(
-    entities = [Baseline::class, Komoditas::class, Lahan::class, Petani::class, Referral::class, Satuan::class, Visit::class],
-    version = 1,
-    exportSchema = false
-)
-abstract class AppDatabase : RoomDatabase() {
-    abstract fun baselineDao(): BaselineDao
-    abstract fun lahanDao(): LahanDao
-    abstract fun petaniDao(): PetaniDao
-    abstract fun referralDao(): ReferralDao
-    abstract fun satuanDao(): SatuanDao
-    abstract fun komoditasDao(): KomoditasDao
-    abstract fun visitDao(): VisitDao
+object AppDatabase {
+    fun getInstance() {
+        Realm.deleteRealm(Helper.setRealmConfig(AppConstant.DB_PETANI))
+        Realm.deleteRealm(Helper.setRealmConfig(AppConstant.DB_REFERRAL))
+        Realm.deleteRealm(Helper.setRealmConfig(AppConstant.DB_LAHAN))
+        Realm.deleteRealm(Helper.setRealmConfig(AppConstant.DB_SATUAN))
+        Realm.deleteRealm(Helper.setRealmConfig(AppConstant.DB_KOMODITAS))
+
+        RealmConfigStore.initModule(
+            Petani::class.java,
+            Helper.setRealmConfig(AppConstant.DB_PETANI)
+        )
+        RealmConfigStore.initModule(
+            Referral::class.java, Helper.setRealmConfig(AppConstant.DB_REFERRAL)
+        )
+        RealmConfigStore.initModule(
+            Lahan::class.java, Helper.setRealmConfig(AppConstant.DB_LAHAN)
+        )
+        RealmConfigStore.initModule(
+            Satuan::class.java, Helper.setRealmConfig(AppConstant.DB_SATUAN)
+        )
+        RealmConfigStore.initModule(
+            Komoditas::class.java, Helper.setRealmConfig(AppConstant.DB_KOMODITAS)
+        )
+    }
 }
