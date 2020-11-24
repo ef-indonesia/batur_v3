@@ -33,6 +33,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_10"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/app_name"
+            android:textAllCaps="true"
+            android:textColor="@color/traceon_brown"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/iv_logo"
+            app:layout_constraintStart_toStartOf="@id/iv_logo"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_username"
             style="@style/Widget.Design.TextInputLayout"
@@ -86,12 +101,22 @@
             android:layout_marginStart="@dimen/dimens_30"
             android:layout_marginTop="@dimen/dimens_20"
             android:layout_marginEnd="@dimen/dimens_30"
-            android:backgroundTint="@color/colorPrimary"
             android:padding="@dimen/dimens_10"
             android:text="@string/login"
             android:textStyle="bold"
+            app:backgroundTint="@color/colorPrimary"
             app:cornerRadius="@dimen/fab_margin"
             app:layout_constraintTop_toBottomOf="@id/tl_password" />
+
+        <ImageView
+            android:id="@+id/iv_powered_by"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimens_60"
+            android:layout_marginTop="@dimen/dimens_20"
+            android:src="@drawable/logo_traseon"
+            app:layout_constraintEnd_toEndOf="@id/bt_submit"
+            app:layout_constraintStart_toStartOf="@id/bt_submit"
+            app:layout_constraintTop_toBottomOf="@id/bt_submit" />
 
         <ProgressBar
             android:id="@+id/pb_login"

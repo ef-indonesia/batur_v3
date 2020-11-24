@@ -4,16 +4,19 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
+        android:iconTint="@android:color/white"
         android:title="@string/home"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/nav_baseline"
         android:icon="@drawable/ic_baseline"
+        android:iconTint="@android:color/white"
         android:title="@string/baseline"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/nav_visit"
         android:icon="@drawable/ic_visit"
+        android:iconTint="@android:color/white"
         android:title="@string/visit"
         app:showAsAction="ifRoom" />
     <item

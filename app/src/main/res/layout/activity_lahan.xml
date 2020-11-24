@@ -11,46 +11,47 @@
 
         <include layout="@layout/toolbar" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_photo"
-            android:layout_width="@dimen/dimens_100"
-            android:layout_height="@dimen/dimens_100"
-            android:layout_marginTop="@dimen/dimens_40"
-            android:src="@drawable/ic_person"
+        <View
+            android:id="@+id/vw_separator"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_background"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_petani"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_farmer"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="@dimen/dimens_5"
+            app:layout_constraintBottom_toBottomOf="@id/vw_separator"
+            app:layout_constraintEnd_toEndOf="@id/vw_separator"
+            app:layout_constraintStart_toStartOf="@id/vw_separator"
+            app:layout_constraintTop_toTopOf="@+id/vw_separator" />
 
         <TextView
-            android:id="@+id/tv_petani"
+            android:id="@+id/tv_nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_10"
-            app:layout_constraintEnd_toEndOf="@id/iv_photo"
-            app:layout_constraintStart_toStartOf="@id/iv_photo"
-            app:layout_constraintTop_toBottomOf="@id/iv_photo"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/iv_petani"
+            app:layout_constraintStart_toStartOf="@id/iv_petani"
+            app:layout_constraintTop_toBottomOf="@id/iv_petani"
             tools:text="Sarno" />
 
         <TextView
             android:id="@+id/tv_alamat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_10"
-            app:layout_constraintEnd_toEndOf="@id/iv_photo"
-            app:layout_constraintStart_toStartOf="@id/iv_photo"
-            app:layout_constraintTop_toBottomOf="@id/tv_petani"
-            tools:text="Jl. Raya Gede" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimens_10"
-            android:layout_marginTop="@dimen/dimens_20"
-            android:text="@string/daftar_lahan"
+            android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_alamat" />
+            app:layout_constraintEnd_toEndOf="@id/iv_petani"
+            app:layout_constraintStart_toStartOf="@id/iv_petani"
+            app:layout_constraintTop_toBottomOf="@id/tv_nama"
+            tools:text="Jl. Raya Gede" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/sl_lahan"
@@ -59,8 +60,9 @@
             android:layout_marginStart="@dimen/dimens_10"
             android:layout_marginTop="@dimen/dimens_10"
             android:layout_marginEnd="@dimen/dimens_10"
+            android:layout_marginBottom="@dimen/dimens_10"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title">
+            app:layout_constraintTop_toBottomOf="@id/tv_alamat">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_lahan"
@@ -82,7 +84,8 @@
             android:tint="@android:color/white"
             app:backgroundTint="@color/traceon_hijau"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

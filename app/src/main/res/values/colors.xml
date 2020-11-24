@@ -10,4 +10,6 @@
     <color name="traceon_merah">#FE6F5E</color>
     <color name="traceon_biru_muda">#B9D3FF</color>
     <color name="traseon_grey">#ECECEC</color>
+    <color name="traceon_yellow">#FFEB3B</color>
+    <color name="traceon_brown">#656565</color>
 </resources>

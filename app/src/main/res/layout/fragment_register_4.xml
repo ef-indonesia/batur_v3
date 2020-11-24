@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <ScrollView
+            android:id="@+id/sv_register"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bt_simpan"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dimens_10">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    app:cardCornerRadius="@dimen/dimens_15"
+                    app:cardElevation="@dimen/dimens_5"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dimens_10">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_20"
+                            android:text="@string/nama_bank"
+                            android:textStyle="bold" />
+
+                        <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                            android:id="@+id/sp_mekanisme"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimens_40"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            app:act_backColor="@color/traseon_grey"
+                            app:act_dropIconTint="@color/colorPrimary"
+                            app:act_hasLabel="false"
+                            app:act_hint="@string/pilih_bank"
+                            app:act_textColor="@android:color/white"
+                            app:act_tint="@color/traseon_grey"
+                            app:layout_constraintBottom_toBottomOf="@id/et_periode"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/et_periode"
+                            app:layout_constraintTop_toTopOf="@id/et_periode" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/nomor_rekening"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_posisi_kelompok"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="8352788132" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/cb_atas_nama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/pemilik_rekening_atas_nama_orang_lain"
+                            android:textColor="#747474"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10"
+                                android:text="@string/atas_nama"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_atas_nama"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_5"
+                                android:background="@drawable/bg_round_full"
+                                android:inputType="textCapSentences"
+                                tools:text="8352788132" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10"
+                                android:text="@string/foto_surat_kuasa"
+                                android:textStyle="bold" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:layout_marginTop="@dimen/dimens_5"
+                                android:background="@drawable/bg_round_transparant"
+                                android:padding="@dimen/dimens_5">
+
+                                <ImageView
+                                    android:id="@+id/iv_nik"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_add_a_photo" />
+
+                                <ImageView
+                                    android:id="@+id/iv_nik_cancel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_cancel"
+                                    android:visibility="gone"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:tint="@color/traceon_merah" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_simpan"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_10"
+            android:layout_weight="0"
+            android:text="@string/simpan"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/dimens_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sv_register" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

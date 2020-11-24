@@ -4,7 +4,7 @@ import android.app.Application
 import com.bumptech.glide.Glide
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.traceon.batur.data.db.AppDatabase
+import com.traceon.batur.utils.AppConstant
 import dagger.hilt.android.HiltAndroidApp
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -17,11 +17,12 @@ class App : Application() {
         Realm.deleteRealm(Realm.getDefaultConfiguration() ?: return)
         Realm.setDefaultConfiguration(
             RealmConfiguration.Builder()
+                .name(AppConstant.DB_NAME)
                 .allowWritesOnUiThread(true)
                 .allowQueriesOnUiThread(true)
+                .deleteRealmIfMigrationNeeded()
                 .build()
         )
-        AppDatabase.getInstance()
         FirebaseCrashlytics.getInstance()
         FirebaseAnalytics.getInstance(this)
     }

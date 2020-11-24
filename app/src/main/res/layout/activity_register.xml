@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cl_register"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.tayfuncesur.stepper.Stepper
-        android:id="@+id/stepper"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimens_5"
-            android:background="@color/colorPrimary" />
+        <include layout="@layout/background" />
 
-    </com.tayfuncesur.stepper.Stepper>
+        <com.tayfuncesur.stepper.Stepper
+            android:id="@+id/stepper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <include layout="@layout/toolbar" />
+            <View
+                android:id="@+id/stepperView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimens_5"
+                android:background="@drawable/gradient" />
 
-    <fragment
-        android:id="@+id/fm_register"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar"
-        app:navGraph="@navigation/register_navigation" />
+        </com.tayfuncesur.stepper.Stepper>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            layout="@layout/toolbar"
+            app:layout_constraintTop_toBottomOf="@id/stepper" />
+
+        <fragment
+            android:id="@+id/fm_register"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            app:navGraph="@navigation/register_navigation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -18,6 +18,7 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+//        buildConfigField "String", "BASE_URL", "\"http://192.168.1.241:8020/ea/traseon/dev/FARMER/ea/service/api_service/\""
         buildConfigField "String", "BASE_URL", "\"http://dev.traseon.net:8020/FARMER/ea/service/api_service/\""
 //        buildConfigField "String", "BASE_URL", "\"http://dev.traseon.net/FARMER/ea/service/api_service/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -77,6 +78,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //material custom
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -151,8 +154,9 @@ dependencies {
     //stepper
     implementation 'com.github.TayfunCesur:Stepper:1.0.2'
 
-    //radiogroup
-    implementation 'com.github.Gavras:MultiLineRadioGroup:v1.0.0.6'
-
-    implementation project(':library-base');
+    //location pickup
+    implementation ('com.schibstedspain.android:leku:8.0.0') {
+        exclude group: 'com.google.android.gms'
+        exclude group: 'androidx.appcompat'
+    }
 }

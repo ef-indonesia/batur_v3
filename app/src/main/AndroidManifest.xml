@@ -41,7 +41,7 @@
             android:name=".ui.login.LoginActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
-            android:name=".ui.visit.VisitActivity"
+            android:name=".ui.visit.pilih.VisitActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
@@ -55,10 +55,25 @@
             android:name=".ui.base.ScanQrCode"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
-            android:name=".ui.baseline.registrasi.RegisterActivity"
+            android:name=".ui.baseline.registrasi.RegistrasiActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
-            android:name=".ui.baseline.PilihActivity"
+            android:name=".ui.baseline.pilih.PilihActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".ui.baseline.lahan.LahanActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".ui.baseline.lahan.ManageLahanActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".ui.baseline.komoditas.BaselineActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".ui.baseline.komoditas.ManageBaselineActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".ui.baseline.lahan.ManagePetaniActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
 
     </application>

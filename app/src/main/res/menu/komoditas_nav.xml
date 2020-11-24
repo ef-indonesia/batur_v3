@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_edit_komoditas"
+        android:title="@string/edit_lahan" />
+    <item
+        android:id="@+id/nav_hapus_komoditas"
+        android:title="@string/hapus_lahan" />
+</menu>

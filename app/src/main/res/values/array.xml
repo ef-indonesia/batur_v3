@@ -28,4 +28,71 @@
         <item>Pemeliharaan</item>
         <item>Panen</item>
     </string-array>
+
+    <string-array name="sex">
+        <item>@string/laki_laki</item>
+        <item>@string/perempuan</item>
+    </string-array>
+
+    <string-array name="agama">
+        <item>@string/islam</item>
+        <item>@string/kristen</item>
+        <item>@string/katolik</item>
+        <item>@string/hindu</item>
+        <item>@string/budha</item>
+        <item>@string/lainnya</item>
+    </string-array>
+
+    <string-array name="marital">
+        <item>@string/kawin</item>
+        <item>@string/belum_kawin</item>
+        <item>@string/janda</item>
+        <item>@string/duda</item>
+    </string-array>
+
+    <string-array name="asal">
+        <item>@string/lokal</item>
+        <item>@string/pendatang</item>
+    </string-array>
+
+    <string-array name="kepemilikan">
+        <item>@string/hak_milik</item>
+        <item>@string/hak_komunitas</item>
+        <item>@string/hak_publik</item>
+        <item>@string/hak_pemanfaatan</item>
+    </string-array>
+
+    <string-array name="tutupan_lahan">
+        <item>@string/dua_lima</item>
+        <item>@string/lima_puluh</item>
+        <item>@string/tujuh_lima</item>
+        <item>@string/seratus</item>
+    </string-array>
+
+    <string-array name="jenis_tanah">
+        <item>@string/aluvial</item>
+        <item>@string/latosol</item>
+        <item>@string/podsoil</item>
+        <item>@string/grumusol</item>
+        <item>@string/andosol</item>
+        <item>@string/regasol</item>
+    </string-array>
+
+    <string-array name="ketinggian_tempat">
+        <item>@string/tiga_ratus_dpl</item>
+        <item>@string/enam_rarus_dpl</item>
+        <item>@string/sembilan_ratus_dpl</item>
+        <item>@string/lebih_sembilan_ratus_dpl</item>
+    </string-array>
+
+    <string-array name="ketersedian_air">
+        <item>@string/dua_bulan</item>
+        <item>@string/lima_bulan</item>
+        <item>@string/sembilan_bulan</item>
+    </string-array>
+
+    <string-array name="pemupukan">
+        <item>@string/kimia</item>
+        <item>@string/non_kimia</item>
+    </string-array>
 </resources>

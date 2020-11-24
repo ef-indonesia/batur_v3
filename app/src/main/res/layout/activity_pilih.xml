@@ -100,7 +100,7 @@
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:listitem="@layout/item_farmer" />
+                tools:listitem="@layout/item_pilih" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -204,12 +204,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginTop="@dimen/dimens_5"
             android:layout_marginEnd="@dimen/dimens_10"
-            android:backgroundTint="@color/colorPrimary"
             android:enabled="false"
             android:text="@string/download"
             android:textStyle="bold"
-            app:cornerRadius="@dimen/dimens_15"
+            app:cornerRadius="@dimen/dimens_5"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <include

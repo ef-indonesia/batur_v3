@@ -1,32 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/dimens_10">
+        android:background="@android:color/white">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_container"
+        <ScrollView
+            android:id="@+id/sv_register"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimens_10"
-            android:layout_marginEnd="@dimen/dimens_10"
-            android:animateLayoutChanges="true"
-            android:padding="@dimen/dimens_10"
-            app:cardCornerRadius="@dimen/dimens_15"
-            app:cardElevation="@dimen/dimens_5"
-            app:cardPreventCornerOverlap="true"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bt_lanjut_tiga"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dimens_10">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    app:cardCornerRadius="@dimen/dimens_15"
+                    app:cardElevation="@dimen/dimens_5"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintTop_toTopOf="parent">
 
-        </com.google.android.material.card.MaterialCardView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dimens_10">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/pekerjaan_utama"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_pekerjaan_utama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="PNS" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/pekerjaan_Sampingan"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_pekerjaan_sampingan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Petani" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/jumlah_pendapatan_tahunan"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_pendapatan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="number"
+                            tools:text="100.000.000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/suku"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_suku"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Jawa" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/asal_usul_petani"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_asal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:columnCount="2"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_lokal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/lokal" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_pendatang"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/pendatang" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/kelompok_tani"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_kelompok_tani"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Bangun Rejo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/posisi_kelompok_tani"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_posisi_kelompok"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Anggota" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/pendidikan_terakhir"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_pendidikan_terakhir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Sarjana" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/pendidikan_non_formal"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_pendidikan_non_formal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Kursus Bahasa Inggris" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/email"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textEmailAddress"
+                            tools:text="petani@traseon.com" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_lanjut_tiga"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_10"
+            android:layout_weight="0"
+            android:text="@string/lanjut"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/dimens_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sv_register" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

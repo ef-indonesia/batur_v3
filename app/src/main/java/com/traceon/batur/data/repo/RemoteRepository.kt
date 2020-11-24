@@ -24,7 +24,7 @@ class RemoteRepository {
         database: String,
         area_id: String,
         staff_id: String
-    ): Observable<List<ResponseDesa>> {
+    ): Observable<ResponseDesa> {
         return api.get_desa(database, area_id, staff_id)
     }
 
@@ -32,15 +32,21 @@ class RemoteRepository {
         database: String,
         mu_id: String,
         staff_id: String
-    ): Observable<List<ResponseArea>> {
+    ): Observable<ResponseArea> {
         return api.get_area(database, mu_id, staff_id)
     }
 
     fun getManagementUnit(
         database: String,
         staff_id: String
-    ): Observable<List<ResponseManagementUnit>> {
+    ): Observable<ResponseManagementUnit> {
         return api.get_manajemen_unit(database, staff_id)
+    }
+
+    fun getBank(
+        database: String?
+    ): Observable<ResponseBank>{
+        return api.get_bank(database)
     }
 
     fun getPetani(
@@ -48,7 +54,7 @@ class RemoteRepository {
         desa_id: String?,
         petani_id: String?
     ): Observable<ResponsePetani> {
-        return api.get_petani_new(database, desa_id, petani_id)
+        return api.get_petani(database, desa_id, petani_id)
     }
 
     fun getReferral(
@@ -60,7 +66,7 @@ class RemoteRepository {
     fun getLahan(
         database: String, petani_id: String
     ): Observable<ResponseLahan> {
-        return api.get_lahan_new(database, petani_id)
+        return api.get_lahan_multi(database, petani_id)
     }
 
     fun getKomoditas(
@@ -73,10 +79,10 @@ class RemoteRepository {
     fun getBaseline(
         database: String?, petani_id: String?
     ): Observable<ResponseBaseline> {
-        return api.get_baseline_in(database, petani_id)
+        return api.get_baseline_multi(database, petani_id)
     }
 
-    fun getDeleteImage(database: String, file_path: String): Call<List<ResponseUpdate>> {
+    fun getDeleteImage(database: String, file_path: String): Observable<ResponseUpdate> {
         return api.delete_image(database, file_path)
     }
 

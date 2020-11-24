@@ -7,16 +7,53 @@
 
     <fragment
         android:id="@+id/step_agreement"
-        android:name="com.traceon.batur.ui.baseline.registrasi.AgreementFragment"
+        android:name="com.traceon.batur.ui.baseline.registrasi.RegistrasiSatuFragment"
         tools:layout="@layout/fragment_register_1">
 
         <action
             android:id="@+id/action_agreement"
+            app:destination="@+id/step_biodata"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/right_to_left"
+            app:popExitAnim="@anim/left_to_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/step_biodata"
+        android:name="com.traceon.batur.ui.baseline.registrasi.RegistrasiDuaFragment"
+        tools:layout="@layout/fragment_register_2">
+
+        <action
+            android:id="@+id/action_biodata"
             app:destination="@+id/step_personal"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/right_to_left"
             app:popExitAnim="@anim/left_to_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/step_personal"
+        android:name="com.traceon.batur.ui.baseline.registrasi.RegistrasiTigaFragment"
+        tools:layout="@layout/fragment_register_3">
+
+        <action
+            android:id="@+id/action_personal"
+            app:destination="@+id/step_dokumen"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/right_to_left"
+            app:popExitAnim="@anim/left_to_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/step_dokumen"
+        android:name="com.traceon.batur.ui.baseline.registrasi.RegistrasiEmpatFragment"
+        tools:layout="@layout/fragment_register_4">
 
     </fragment>
 

@@ -1,13 +1,15 @@
 package com.traceon.batur.utils
 
 object AppConstant {
+    const val DIR_NAME = "batur"
+    const val DB_NAME = "batur-db"
     const val DB_LAHAN = "lahans"
     const val DB_PETANI = "petanis"
     const val DB_KOMODITAS = "komoditases"
     const val DB_BASELINE = "baselines"
     const val DB_REFERRAL = "referrals"
     const val DB_SATUAN = "satuans"
-
+    const val KODE = "kode"
     const val NAME = "name"
     const val EMAIL = "email"
     const val PHONE = "phone"
@@ -18,6 +20,8 @@ object AppConstant {
     const val KODE_PERUSAHAAN = "kode_perusahaan"
     const val ID_AREA = "id_area"
     const val BASELINE = "baseline"
+    const val VISIT = "visit"
+    const val LAHAN = "lahan"
     const val DATABASE = "database"
     const val FOTO = "foto"
     const val ID_DESA = "id_desa"
@@ -33,4 +37,21 @@ object AppConstant {
     const val KOMODITAS = "komoditas"
     const val ID_PROGRAM = "id_program"
     const val ID_KOMODITAS = "id_komoditas"
+    const val PETANI = "petani"
+
+    const val ARG_SIGNATURE = "signature"
+    const val ARG_NIK = "nik"
+    const val ARG_NAMA = "nama"
+    const val ARG_ALAMAT = "alamat"
+    const val ARG_PENDAPATAN = "pendapatan"
+    const val ARG_SUKU = "suku"
+    const val ARG_asal = "asal"
+    const val ARG_KELOMPOK_TANI = "kelompok_tani"
+    const val ARG_POSISI_KELOMPOK = "posisi_kelompok"
+    const val ARG_PENDIDIKAN = "pendidikan"
+    const val ARG_PENDIDIKAN_NON_FORMAL = "pendidikan_non_formal"
+    const val ARG_EMAIL = "email"
+
+    const val ACTION_ADD = 0
+    const val ACTION_EDIT = 1
 }

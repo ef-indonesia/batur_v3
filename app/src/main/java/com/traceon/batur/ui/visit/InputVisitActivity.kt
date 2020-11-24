@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
+import androidx.lifecycle.ViewModel
 import awesome.vrund.vpawesomewidgets.VPBaseAdapter
 import awesome.vrund.vpawesomewidgets.VPSpinner
 import cn.pedant.SweetAlert.SweetAlertDialog
@@ -35,7 +36,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.toolbar.*
 
 @AndroidEntryPoint
-class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, VisitViewModel>() {
+class InputVisitActivity : BaseActivity<ActivityInputVisitBinding, ViewModel>() {
 
     private lateinit var adapter: PhotoAdapter
 

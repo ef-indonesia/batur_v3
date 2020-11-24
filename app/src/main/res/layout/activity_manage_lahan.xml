@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/background" />
+
+        <include layout="@layout/toolbar" />
+
+        <ScrollView
+            android:id="@+id/sv_lahan"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@id/bt_simpan"
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dimens_10">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimens_10"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_petani"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/management_unit"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dimens_5"
+                            android:text="@string/titik_dua"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_management_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            tools:text="Kebument 02" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/area"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dimens_5"
+                            android:text="@string/titik_dua"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            tools:text="Wonorejo" />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/desa"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dimens_5"
+                            android:text="@string/titik_dua"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_desa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            tools:text="Wonorejo" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/dimens_10"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    app:cardCornerRadius="@dimen/dimens_15"
+                    app:cardElevation="@dimen/dimens_5"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dimens_10">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/blok"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_blok"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="8" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/sub_blok"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_sub_blok"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="8" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/nomor_dokumen_lahan"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_nomor_dokumen_lahan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="8AH-FJSGH-G265" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/luas_lahan"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_luas_lahan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_round_full"
+                                tools:text="65000" />
+
+                            <TextView
+                                android:id="@+id/tv_luas_lahan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="@dimen/dimens_10"
+                                android:gravity="center"
+                                android:text="m2"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/tv_status_perkawinan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/status_hak_atas_lahan"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_status_perkawinan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:columnCount="1"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_hak_milik"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/hak_milik" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_hak_komunitas"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/hak_komunitas" />
+
+
+                                <RadioButton
+                                    android:id="@+id/rb_publik"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/hak_publik" />
+
+                                <RadioButton
+                                    android:id="@+id/eb_hak_pemanfaatan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/hak_pemanfaatan" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_20"
+                            android:text="@string/koorddinat_lokasi"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_lokasi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:background="@drawable/bg_round_full"
+                            android:drawableStart="@drawable/ic_location"
+                            android:drawablePadding="@dimen/dimens_5"
+                            android:drawableTint="@color/colorPrimary"
+                            tools:text="-7.0234648,110.3724504" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/tutupan_pohon"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cv_status_perkawinan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_tutupan_pohon"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:columnCount="2"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_dua_lima"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/dua_lima" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_lima_puluh"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/lima_puluh" />
+
+
+                                <RadioButton
+                                    android:id="@+id/rb_tujuh_lima"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/tujuh_lima" />
+
+                                <RadioButton
+                                    android:id="@+id/eb_seratus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/seratus" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/deskripsi_lahan"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_keterangan_lahan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences|textMultiLine"
+                            tools:text="Lahan ini adalah pemebrian mbah kakung alias warisan hahahah" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/jenis_tanah"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_jenis_tanah"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:columnCount="2"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_aluvial"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/aluvial" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_latosol"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/latosol" />
+
+
+                                <RadioButton
+                                    android:id="@+id/rb_podsoil"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/podsoil" />
+
+                                <RadioButton
+                                    android:id="@+id/eb_grumusol"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/grumusol" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_andosol"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/andosol" />
+
+                                <RadioButton
+                                    android:id="@+id/eb_regasol"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/regasol" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/ketinggian_tempat"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_keinggian_tempat"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:columnCount="2"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_tiga_ratus_dpl"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/tiga_ratus_dpl" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_enam_rarus_dpl"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/enam_rarus_dpl" />
+
+
+                                <RadioButton
+                                    android:id="@+id/rb_sembilan_ratus_dpl"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/sembilan_ratus_dpl" />
+
+                                <RadioButton
+                                    android:id="@+id/eb_lebih_sembilan_ratus_dpl"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/lebih_sembilan_ratus_dpl" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/kemiringan_lahan"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_kemiringan_lahan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:columnCount="1"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_datar"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/datar" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_landai"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/landai" />
+
+
+                                <RadioButton
+                                    android:id="@+id/rb_agak_curam"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/agak_curam" />
+
+                                <RadioButton
+                                    android:id="@+id/eb_curam"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/curam" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_sangat_curam"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/sangat_curam" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/ketersediaan_air"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_ketersediaan_air"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:columnCount="1"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_dua_bulan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/dua_bulan" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_lima_bulan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/lima_bulan" />
+
+
+                                <RadioButton
+                                    android:id="@+id/rb_sembilan_bulan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/sembilan_bulan" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/akses_jalan_desa"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_akses_jalan_desa"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_round_full"
+                                tools:text="65000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="@dimen/dimens_10"
+                                android:gravity="center"
+                                android:text="m"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/tv_jenis_kelamin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/pemupukan"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_pemupukan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:columnCount="2"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_pupuk_kimia"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/kimia" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_pupuk_nn_kimia"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/non_kimia" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/pestisida"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            app:cardCornerRadius="@dimen/dimens_5"
+                            app:cardElevation="@dimen/dimens_5"
+                            app:cardPreventCornerOverlap="true">
+
+                            <com.traceon.batur.ui.base.MultiLineRadioGroup
+                                android:id="@+id/rg_pestisida"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:columnCount="2"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/dimens_10"
+                                android:paddingEnd="@dimen/dimens_10">
+
+                                <RadioButton
+                                    android:id="@+id/rb_pestisida_kimia"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/kimia" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_pestisida_nn_kimia"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:buttonTint="@color/traceon_merah"
+                                    android:text="@string/non_kimia" />
+
+                            </com.traceon.batur.ui.base.MultiLineRadioGroup>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/jenis_tanaman"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_jenis_tanaman"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Padi" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/sejarah_budidaya"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_sejarah_budidaya"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Panen terus" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_10"
+                            android:text="@string/potensi_lahan"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_potensi_lahan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_5"
+                            android:background="@drawable/bg_round_full"
+                            android:inputType="textCapSentences"
+                            tools:text="Palawija" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_simpan"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_10"
+            android:layout_weight="0"
+            android:enabled="false"
+            android:text="@string/simpan"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/dimens_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sv_lahan" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

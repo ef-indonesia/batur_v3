@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/background" />
+
+        <include layout="@layout/toolbar" />
+
+        <LinearLayout
+            android:id="@+id/ll_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/dimens_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_kode_lahan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        tools:text="No. Lahan : L19DG257" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:layout_weight="1"
+                        android:animateLayoutChanges="true"
+                        app:cardCornerRadius="@dimen/dimens_15"
+                        app:cardElevation="@dimen/dimens_5"
+                        app:cardPreventCornerOverlap="true"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimens_10">
+
+                            <TextView
+                                android:id="@+id/tv_komoditas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                tools:text="Kopi" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_20"
+                                android:text="@string/produktivitas"
+                                android:textStyle="bold" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_produksi"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/bg_round_full"
+                                    app:layout_constraintEnd_toStartOf="@id/sp_satuan"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    tools:text="6000" />
+
+                                <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                                    android:id="@+id/sp_satuan"
+                                    android:layout_width="@dimen/dimens_100"
+                                    android:layout_height="0dp"
+                                    android:layout_marginStart="@dimen/dimens_10"
+                                    app:act_backColor="@color/colorPrimary"
+                                    app:act_dropIconTint="@android:color/white"
+                                    app:act_hasLabel="false"
+                                    app:act_hint="Pilih"
+                                    app:act_hintColor="@android:color/white"
+                                    app:act_textColor="@android:color/white"
+                                    app:act_tint="@color/colorPrimary"
+                                    app:layout_constraintBottom_toBottomOf="@id/et_produksi"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/et_produksi"
+                                    app:layout_constraintTop_toTopOf="@id/et_produksi" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_periode"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/bg_round_full"
+                                    app:layout_constraintEnd_toStartOf="@id/sp_waktu"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    tools:text="3" />
+
+                                <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                                    android:id="@+id/sp_waktu"
+                                    android:layout_width="@dimen/dimens_100"
+                                    android:layout_height="0dp"
+                                    android:layout_marginStart="@dimen/dimens_10"
+                                    app:act_backColor="@color/colorPrimary"
+                                    app:act_dropIconTint="@android:color/white"
+                                    app:act_hasLabel="false"
+                                    app:act_hint="Pilih"
+                                    app:act_hintColor="@android:color/white"
+                                    app:act_textColor="@android:color/white"
+                                    app:act_tint="@color/colorPrimary"
+                                    app:layout_constraintBottom_toBottomOf="@id/et_periode"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/et_periode"
+                                    app:layout_constraintTop_toTopOf="@id/et_periode" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_20"
+                                android:text="@string/pemanfaatan"
+                                android:textStyle="bold" />
+
+                            <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                                android:id="@+id/sp_pemanfaatan"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dimens_40"
+                                android:layout_marginTop="@dimen/dimens_10"
+                                app:act_backColor="@color/traseon_grey"
+                                app:act_dropIconTint="@color/colorPrimary"
+                                app:act_hasLabel="false"
+                                app:act_hint="Pilih"
+                                app:act_textColor="@android:color/white"
+                                app:act_tint="@color/traseon_grey"
+                                app:layout_constraintBottom_toBottomOf="@id/et_periode"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/et_periode"
+                                app:layout_constraintTop_toTopOf="@id/et_periode" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_20"
+                                android:text="@string/nilai_rupiah"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_nilai"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/bg_round_full"
+                                    tools:text="65000" />
+
+                                <TextView
+                                    android:id="@+id/tv_nilai_satuan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginEnd="@dimen/dimens_10"
+                                    android:gravity="center"
+                                    android:text="@string/nilai_rupiah"
+                                    android:textStyle="bold"
+                                    tools:text="/Kg" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_20"
+                                android:text="@string/mekanisme"
+                                android:textStyle="bold" />
+
+                            <awesome.vrund.vpawesomewidgets.VPAutoCompleteTextView
+                                android:id="@+id/sp_mekanisme"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dimens_40"
+                                android:layout_marginTop="@dimen/dimens_10"
+                                app:act_backColor="@color/traseon_grey"
+                                app:act_dropIconTint="@color/colorPrimary"
+                                app:act_hasLabel="false"
+                                app:act_hint="Pilih"
+                                app:act_textColor="@android:color/white"
+                                app:act_tint="@color/traseon_grey"
+                                app:layout_constraintBottom_toBottomOf="@id/et_periode"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/et_periode"
+                                app:layout_constraintTop_toTopOf="@id/et_periode" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_20"
+                                android:text="@string/koorddinat_lokasi"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_lokasi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_10"
+                                android:background="@drawable/bg_round_full"
+                                android:drawableStart="@drawable/ic_location"
+                                android:drawablePadding="@dimen/dimens_5"
+                                android:drawableTint="@color/colorPrimary"
+                                tools:text="-7.0234648,110.3724504" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimens_20">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerInParent="true"
+                                    android:text="@string/foto_dokumen"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/iv_add_photo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_add_a_photo" />
+
+                            </RelativeLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_photo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_simpan"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:layout_weight="0"
+                        android:enabled="false"
+                        android:text="@string/simpan"
+                        android:textStyle="bold"
+                        app:cornerRadius="@dimen/dimens_5" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

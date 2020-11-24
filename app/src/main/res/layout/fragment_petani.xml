@@ -7,32 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/background" />
-
-        <include layout="@layout/toolbar" />
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/sv_petani"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimens_10"
-            android:layout_marginTop="@dimen/dimens_10"
-            android:layout_marginEnd="@dimen/dimens_10"
-            android:background="@drawable/bg_round"
-            app:layout_constraintTop_toBottomOf="@+id/appbar"
-            app:queryHint="Cari" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimens_10"
-            android:layout_marginTop="@dimen/dimens_10"
-            android:layout_marginEnd="@dimen/dimens_10"
-            android:text="@string/petani"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/cl_background" />
-
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/sl_petani"
             android:layout_width="match_parent"
@@ -42,7 +16,7 @@
             android:layout_marginEnd="@dimen/dimens_10"
             android:layout_marginBottom="@dimen/dimens_10"
             app:layout_constraintBottom_toTopOf="@id/cv_info"
-            app:layout_constraintTop_toBottomOf="@id/tv_title">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_petani"

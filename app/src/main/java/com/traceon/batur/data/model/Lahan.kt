@@ -10,7 +10,7 @@ open class Lahan(
     @PrimaryKey
     var ID: Int? = null,
     var akses_jalan: String? = null,
-    var akses_ke_sumber_air: String? = null,
+    var akses_ke_irigasi: String? = null,
     var aktif: String? = null,
     var blok: String? = null,
     var created_at: String? = null,
@@ -36,7 +36,7 @@ open class Lahan(
     var petani_ID: Int? = null,
     var potensi_pemanfaatan_lahan: String? = null,
     var sejarah_budidaya_lahan: String? = null,
-    var status_kepemelikikan_lahan: String? = null,
+    var status_kepemilikan_lahan: String? = null,
     var sub_blok: String? = null,
     var tutupan_lahan: String? = null
 ) : RealmObject(), Parcelable

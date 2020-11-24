@@ -27,21 +27,21 @@ interface ApiService {
     fun get_manajemen_unit(
         @Query("database") database: String?,
         @Query("staff_ID") staff_ID: String?
-    ): Observable<List<ResponseManagementUnit>>
+    ): Observable<ResponseManagementUnit>
 
     @GET("get_area?lim=1")
     fun get_area(
         @Query("database") database: String?,
         @Query("manajemen_unit_ID") manajemen_unit_ID: String?,
         @Query("staff_ID") staff_ID: String?
-    ): Observable<List<ResponseArea>>
+    ): Observable<ResponseArea>
 
     @GET("get_desa?lim=1")
     fun get_desa(
         @Query("database") database: String?,
         @Query("area_ID") area_ID: String?,
         @Query("staff_ID") staff_ID: String?
-    ): Observable<List<ResponseDesa>>
+    ): Observable<ResponseDesa>
 
     @GET("get_kode_referal?lim=1")
     fun get_kode_referal(
@@ -50,21 +50,31 @@ interface ApiService {
     ): Observable<ResponseReferral>
 
     @GET("get_petani_new/?lim=1")
-    fun get_petani_new(
+    fun get_petani(
         @Query("database") database: String?,
         @Query("desa_ID") desa_ID: String?,
         @Query("ID") petani_ID: String?
     ): Observable<ResponsePetani>
 
+    @GET("get_bank")
+    fun get_bank(@Query("database") database: String?): Observable<ResponseBank>
 
     @GET("get_lahan_new/?lim=1")
-    fun get_lahan_new(
+    fun get_lahan(
+        @Query("database") database: String?,
+        @Query("petani_ID") petani_ID: String?,
+        @Query("desa_ID") desa_ID: String?,
+        @Query("kode") kode: String?
+    ): Observable<ResponseLahan>
+
+    @GET("get_lahan_in_new/?lim=1")
+    fun get_lahan_multi(
         @Query("database") database: String?,
         @Query("petani_ID") petani_ID: String?
     ): Observable<ResponseLahan>
 
     @GET("get_baseline_in/?lim=1")
-    fun get_baseline_in(
+    fun get_baseline_multi(
         @Query("database") database: String?,
         @Query("petani_ID") petani_ID: String?
     ): Observable<ResponseBaseline>
@@ -79,7 +89,7 @@ interface ApiService {
     fun delete_image(
         @Query("database") database: String?,
         @Query("file_path") file_path: String?
-    ): Call<List<ResponseUpdate>>
+    ): Observable<ResponseUpdate>
 
     @GET("profile/?&client_ID=1&jenis_order=online")
     fun request_profil(
@@ -91,7 +101,7 @@ interface ApiService {
     ): Call<List<ResponseProfile>>
 
     @Multipart
-    @POST("simpan_petani")
+    @POST("simpan_petani_new")
     fun simpan_petani(
         @Part file: MultipartBody.Part?,
         @PartMap data: Map<String, RequestBody>

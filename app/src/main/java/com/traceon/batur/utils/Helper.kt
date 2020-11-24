@@ -1,12 +1,11 @@
 package com.traceon.batur.utils
 
-import android.app.Activity
-import android.app.NotificationChannel
-import android.app.NotificationManager
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
@@ -21,12 +20,14 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
-import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.bumptech.glide.signature.ObjectKey
 import com.google.gson.Gson
 import com.traceon.batur.R
 import com.traceon.batur.data.response.ResponseLogin
@@ -40,6 +41,8 @@ import java.io.IOException
 import java.io.OutputStream
 import java.net.InetSocketAddress
 import java.net.Socket
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Helper {
 
@@ -208,7 +211,7 @@ object Helper {
             .show()
     }
 
-    fun onFetchBaseline(context: Context, url: String, path: String) {
+    fun onFetchImage(context: Context, url: String, path: String) {
         val file = url.substring(url.lastIndexOf("/") + 1)
         Log.d("DL", "URL : $url")
         Thread {
@@ -311,6 +314,78 @@ object Helper {
         val blockSize = stat.blockSizeLong
         val availableBlocks = stat.availableBlocksLong
         return Formatter.formatFileSize(context, availableBlocks * blockSize)
+    }
+
+    val requestOperation = RequestOptions()
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .signature(ObjectKey("4f8d14bb3054db47faf293ab1d459ac9"))
+        .override(500)
+
+    val requestSmall = RequestOptions()
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .signature(ObjectKey("4f8d14bb3054db47faf293ab1d459ac9"))
+        .override(200)
+
+    fun formatTanggal(tgl: String?, mode: Int?): String {
+        return if (mode == 0) {
+            val parser = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+            formatter.format(parser.parse(tgl))
+        } else {
+            val parser = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+            val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+            formatter.format(parser.parse(tgl))
+        }
+    }
+
+    fun showProgressDialogWithTitle(
+        progressDialog: ProgressDialog?,
+        title: String?,
+        substring: String?
+    ) {
+        progressDialog?.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        progressDialog?.setCancelable(false)
+        progressDialog?.setTitle(title)
+        progressDialog?.setMessage(substring)
+        progressDialog?.show()
+    }
+
+    fun hideProgressDialogWithTitle(progressDialog: ProgressDialog?) {
+        progressDialog?.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        progressDialog?.dismiss()
+    }
+
+    fun getDate(context: Context?): String? {
+        var date: String? = null
+        val cal = Calendar.getInstance()
+        val year = cal.get(Calendar.YEAR)
+        val month = cal.get(Calendar.MONTH)
+        val day = cal.get(Calendar.DAY_OF_MONTH)
+
+        val dialog = DatePickerDialog(
+            context ?: return null,
+            android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+            { _, years, months, dayOfMonth ->
+                val mMonth = months + 1
+                date = dayOfMonth.toString().plus("/").plus(mMonth).plus("/").plus(years)
+            },
+            year,
+            month,
+            day
+        )
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+        return date
+    }
+
+    fun makeMediaFolder(filepath: File) {
+        filepath.mkdirs()
+        val file = File(filepath.path + "/" + ".nomedia")
+        try {
+            file.createNewFile()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 
 }

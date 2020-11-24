@@ -1,33 +1,35 @@
 package com.traceon.batur.ui.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import com.traceon.batur.R
 import com.traceon.batur.data.response.ResponseLogin
+import com.traceon.batur.databinding.FragmentHomeBinding
+import com.traceon.batur.ui.MainActivity
+import com.traceon.batur.ui.base.BaseFragment
 import com.traceon.batur.utils.Helper
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_home.*
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, ViewModel>() {
 
     private var responseLogin: ResponseLogin? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    override fun getViewModelBindingVariable(): Int = NO_VIEW_MODEL_BINDING_VARIABLE
+
+    override fun getLayoutId(): Int = R.layout.fragment_home
+
+    override fun init() {
+        responseLogin = Helper.getSesiLogin(context ?: return)
+
+        getDataBinding().tvName.text = responseLogin?.nama_lengkap
+        getDataBinding().tvDescription.text = responseLogin?.client_name
+
+        getDataBinding().clTopLeft.setOnClickListener {
+            (activity as MainActivity).setMenu(1)
+        }
+        getDataBinding().clTopRight.setOnClickListener {
+            (activity as MainActivity).setMenu(2)
+        }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        responseLogin = Helper.getSesiLogin(context ?: return)
-        tv_name.text = responseLogin?.nama_lengkap
-        tv_description.text = responseLogin?.client_name
-    }
 }

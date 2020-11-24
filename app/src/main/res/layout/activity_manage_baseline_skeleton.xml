@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/dimens_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:layout_width="@dimen/dimens_100"
+                android:layout_height="@dimen/dimens_20"
+                android:background="@color/light_transparent"
+                tools:text="No. Lahan : L19DG257" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dimens_10"
+                android:layout_weight="1"
+                android:animateLayoutChanges="true"
+                app:cardCornerRadius="@dimen/dimens_15"
+                app:cardElevation="@dimen/dimens_5"
+                app:cardPreventCornerOverlap="true"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimens_10">
+
+                    <View
+                        android:layout_width="@dimen/dimens_100"
+                        android:layout_height="@dimen/dimens_20"
+                        android:background="@color/light_transparent" />
+
+                    <View
+                        android:layout_width="@dimen/dimens_100"
+                        android:layout_height="@dimen/dimens_20"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:background="@color/light_transparent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10">
+
+                        <View
+                            android:id="@+id/et_produksi"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dimens_40"
+                            android:background="@drawable/bg_round_full"
+                            app:layout_constraintEnd_toStartOf="@id/sp_satuan"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/sp_satuan"
+                            android:layout_width="@dimen/dimens_100"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="@dimen/dimens_10"
+                            android:background="@color/light_transparent"
+                            app:layout_constraintBottom_toBottomOf="@id/et_produksi"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/et_produksi"
+                            app:layout_constraintTop_toTopOf="@id/et_produksi" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10">
+
+                        <View
+                            android:id="@+id/et_periode"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dimens_40"
+                            android:background="@drawable/bg_round_full"
+                            app:layout_constraintEnd_toStartOf="@id/sp_waktu"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/sp_waktu"
+                            android:layout_width="@dimen/dimens_100"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="@dimen/dimens_10"
+                            android:background="@color/light_transparent"
+                            app:layout_constraintBottom_toBottomOf="@id/et_periode"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/et_periode"
+                            app:layout_constraintTop_toTopOf="@id/et_periode" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="@dimen/dimens_100"
+                        android:layout_height="@dimen/dimens_20"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:background="@color/light_transparent" />
+
+                    <View
+                        android:id="@+id/sp_pemanfaatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimens_40"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:background="@color/light_transparent"
+                        app:layout_constraintBottom_toBottomOf="@id/et_periode"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et_periode"
+                        app:layout_constraintTop_toTopOf="@id/et_periode" />
+
+                    <View
+                        android:layout_width="@dimen/dimens_100"
+                        android:layout_height="@dimen/dimens_20"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:background="@color/light_transparent" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_10">
+
+                        <View
+                            android:id="@+id/et_nilai"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimens_40"
+                            android:background="@drawable/bg_round_full" />
+
+                        <TextView
+                            android:id="@+id/tv_nilai_satuan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="@dimen/dimens_10"
+                            android:gravity="center"
+                            android:text="@string/nilai_rupiah"
+                            android:textStyle="bold"
+                            android:visibility="gone"
+                            tools:text="/Kg" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="@dimen/dimens_100"
+                        android:layout_height="@dimen/dimens_20"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:background="@color/light_transparent" />
+
+                    <View
+                        android:id="@+id/sp_mekanisme"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimens_40"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:background="@color/light_transparent"
+                        app:layout_constraintBottom_toBottomOf="@id/et_periode"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et_periode"
+                        app:layout_constraintTop_toTopOf="@id/et_periode" />
+
+                    <View
+                        android:layout_width="@dimen/dimens_100"
+                        android:layout_height="@dimen/dimens_20"
+                        android:layout_marginTop="@dimen/dimens_20"
+                        android:background="@color/light_transparent" />
+
+                    <View
+                        android:id="@+id/et_lokasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimens_40"
+                        android:layout_marginTop="@dimen/dimens_10"
+                        android:background="@color/light_transparent" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_20">
+
+                        <View
+                            android:layout_width="@dimen/dimens_100"
+                            android:layout_height="@dimen/dimens_20"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:background="@color/light_transparent" />
+
+                        <View
+                            android:id="@+id/iv_add_photo"
+                            android:layout_width="@dimen/dimens_40"
+                            android:layout_height="@dimen/dimens_40"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:background="@color/light_transparent" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:id="@+id/bt_simpan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_40"
+                android:layout_marginTop="@dimen/dimens_10"
+                android:layout_weight="0"
+                android:background="@color/light_transparent" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

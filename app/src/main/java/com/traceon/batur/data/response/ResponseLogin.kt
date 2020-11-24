@@ -1,5 +1,9 @@
 package com.traceon.batur.data.response
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class ResponseLogin(
     val API_KEY: String,
     val ID: Int,
@@ -23,4 +27,4 @@ data class ResponseLogin(
     val tipe_user: String,
     val token: String,
     val user_ID: Int
-)
+) : Parcelable

@@ -5,6 +5,4 @@ import com.traceon.batur.ui.base.BaseViewModel
 
 class ProfileViewModel @ViewModelInject constructor(
 
-) : BaseViewModel() {
-
-}
+) : BaseViewModel()

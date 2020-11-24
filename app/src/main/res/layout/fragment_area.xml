@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_choice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:animateLayoutChanges="true"
+            app:cardCornerRadius="@dimen/dimens_15"
+            app:cardElevation="@dimen/dimens_5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:paddingStart="@dimen/dimens_5"
+                android:paddingTop="@dimen/dimens_5"
+                android:paddingEnd="@dimen/dimens_5"
+                android:paddingBottom="@dimen/dimens_5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimens_5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/iv_simbol"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_spinner_mu"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimens_40"
+                        android:background="@drawable/bg_spinner"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                            android:id="@+id/sp_mu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimens_5"
+                            android:background="@android:color/transparent"
+                            android:spinnerMode="dialog"
+                            android:textSize="12sp"
+                            app:hintText="@string/management_unit"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_mu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimens_5"
+                            android:background="@null"
+                            android:hint="@string/management_unit"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/sp_mu"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimens_5"
+                            android:src="@drawable/ic_arrow_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_spinner_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimens_40"
+                        android:layout_marginTop="@dimen/dimens_5"
+                        android:background="@drawable/bg_spinner"
+                        app:layout_constraintTop_toBottomOf="@id/cl_spinner_mu">
+
+                        <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                            android:id="@+id/sp_area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimens_5"
+                            android:background="@android:color/transparent"
+                            android:enabled="false"
+                            android:gravity="center_vertical"
+                            android:spinnerMode="dialog"
+                            android:textSize="12sp"
+                            app:hintText="@string/area"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimens_5"
+                            android:background="@null"
+                            android:hint="@string/area"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/sp_area"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimens_5"
+                            android:src="@drawable/ic_arrow_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_spinner_desa"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimens_40"
+                        android:layout_marginTop="@dimen/dimens_5"
+                        android:background="@drawable/bg_spinner"
+                        app:layout_constraintTop_toBottomOf="@id/cl_spinner_area">
+
+                        <com.bytcode.lib.spinner.multiselectspinner.spinners.SingleSpinnerSearch
+                            android:id="@+id/sp_desa"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimens_5"
+                            android:background="@android:color/transparent"
+                            android:spinnerMode="dialog"
+                            android:textSize="12sp"
+                            app:hintText="@string/desa"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_desa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimens_5"
+                            android:background="@null"
+                            android:hint="@string/desa"
+                            app:layout_constraintBottom_toBottomOf="@id/sp_desa"
+                            app:layout_constraintStart_toStartOf="@id/sp_desa"
+                            app:layout_constraintTop_toTopOf="@id/sp_desa" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimens_5"
+                            android:src="@drawable/ic_arrow_down"
+                            app:layout_constraintBottom_toBottomOf="@id/sp_desa"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/sp_desa" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/view_cv"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/dimens_70"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_simbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_dashboard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_submit_baseline"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginTop="@dimen/dimens_5"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:enabled="false"
+            android:text="@string/lanjut"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/dimens_5"
+            app:layout_constraintTop_toBottomOf="@id/cv_menu" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_5"
+            android:layout_marginStart="@dimen/dimens_10"
+            android:layout_marginTop="@dimen/dimens_5"
+            android:layout_marginEnd="@dimen/dimens_10"
+            android:background="@color/traceon_sky_blue"
+            app:layout_constraintTop_toBottomOf="@id/bt_submit_baseline" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

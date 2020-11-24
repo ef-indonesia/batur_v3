@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_baseline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimens_5"
+            app:cardCornerRadius="@dimen/dimens_15"
+            app:cardElevation="@dimen/dimens_5"
+            app:cardPreventCornerOverlap="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimens_10">
+
+                <View
+                    android:id="@+id/tv_lahan"
+                    android:layout_width="@dimen/dimens_60"
+                    android:layout_height="@dimen/dimens_20"
+                    android:layout_marginStart="@dimen/dimens_10"
+                    android:background="@color/light_transparent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/tv_keterangan"
+                    android:layout_width="@dimen/dimens_100"
+                    android:layout_height="@dimen/dimens_20"
+                    android:layout_marginTop="@dimen/dimens_5"
+                    android:background="@color/light_transparent"
+                    app:layout_constraintStart_toStartOf="@id/tv_lahan"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lahan" />
+
+                <View
+                    android:layout_width="@dimen/dimens_20"
+                    android:layout_height="@dimen/dimens_20"
+                    android:layout_marginEnd="@dimen/dimens_5"
+                    android:background="@color/light_transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/iv_more"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/iv_more"
+                    android:layout_width="@dimen/dimens_20"
+                    android:layout_height="@dimen/dimens_20"
+                    android:background="@color/light_transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</layout>

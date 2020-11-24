@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_baseline"
-        android:name="com.traceon.batur.ui.baseline.BaselineFragment"
+        android:name="com.traceon.batur.ui.baseline.pilih.AreaFragment"
         android:label="Baseline"
-        tools:layout="@layout/fragment_baseline" />
+        tools:layout="@layout/fragment_area" />
 
     <fragment
         android:id="@+id/nav_visit"
-        android:name="com.traceon.batur.ui.visit.VisitFragment"
+        android:name="com.traceon.batur.ui.visit.dashboard.VisitFragment"
         android:label="Visit"
         tools:layout="@layout/fragment_visit" />
 
